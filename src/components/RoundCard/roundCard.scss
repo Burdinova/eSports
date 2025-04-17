@@ -1,0 +1,56 @@
+@import url("../../fonts.scss");
+
+.round-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: roboto-r;
+  // width: 100px;
+  // border: 1px red solid;
+  width: calc((100% - 30px * 6) / 7);
+  aspect-ratio: 1;
+  // height: 1;
+
+  &__avatar {
+    // width: calc((100% - 20px * 5) / 6);
+    width: 100%;
+    aspect-ratio: 1;
+    // height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__name {
+    margin-top: 0.8rem;
+    font-size: clamp(12px, 2vw, 16px);
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    // text-align: center;
+    // color: white;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    width: 100%;
+  }
+
+  &__button {
+    // width: calc((100% - 20px * 7) / 8);
+    padding: 0.3rem 0.6rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff4e53;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      // background-color: #ff4e53;
+      opacity: 0.7;
+    }
+  }
+}

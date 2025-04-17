@@ -1,0 +1,24 @@
+@import url("../../fonts.scss");
+
+.button {
+  color: #fff;
+  font-family: roboto-b;
+  background: #ff4e53;
+  border-radius: 10px;
+  text-decoration: none;
+
+  border: none;
+  &__link {
+    padding: 15px 80px;
+    font-size: clamp(12px, 1.2vw, 18px);
+  }
+
+  &__modal {
+    padding: 12px 25px;
+    font-size: clamp(12px, 1.2vw, 16px);
+  }
+
+  @media (max-width: 1300px) {
+    padding: 8px 18px;
+  }
+}

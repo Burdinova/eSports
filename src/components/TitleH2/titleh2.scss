@@ -1,0 +1,58 @@
+@import url("../../fonts.scss");
+
+.title-h2 {
+  font-size: clamp(20px, 2vw, 30px);
+  font-family: roboto-b;
+  margin-top: clamp(30px, 8vw, 80px);
+  margin-bottom: clamp(20px, 8vw, 35px);
+}
+// .titleButton {
+//   box-sizing: border-box;
+//   display: flex;
+//   justify-content: space-between;
+
+//   margin-top: clamp(30px, 8vw, 80px);
+//   margin-bottom: clamp(20px, 8vw, 35px);
+
+//   &__h2 {
+//     font-size: clamp(20px, 2vw, 30px);
+//     font-family: roboto-b;
+//   }
+
+//   &__button {
+//     color: #fff;
+//     font-family: roboto-b;
+//     background: #ff4e53;
+//     padding: 12px 26px;
+//     border-radius: 10px;
+//     text-decoration: none;
+//     font-size: clamp(12px, 1.2vw, 16px);
+//     border: none;
+
+//     @media (max-width: 1300px) {
+//       padding: 8px 18px;
+//     }
+//   }
+// }
+// .title {
+//   font-size: clamp(20px, 2vw, 30px);
+//   font-family: roboto-b;
+//   // margin-top: clamp(30px, 8vw, 80px);
+//   // margin-bottom: clamp(20px, 8vw, 35px);
+// }
+// .modal-button {
+//   color: #fff;
+//   font-family: roboto-b;
+//   background: #ff4e53;
+//   padding: 12px 26px;
+//   border-radius: 10px;
+//   text-decoration: none;
+//   font-size: clamp(12px, 1.2vw, 16px);
+//   border: none;
+// }
+
+// @media (max-width: 1300px) {
+//   .modal-button {
+//     padding: 8px 18px;
+//   }
+// }

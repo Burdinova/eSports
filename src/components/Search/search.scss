@@ -1,0 +1,62 @@
+@import url("../../fonts.scss");
+
+.search {
+  margin-bottom: 1.2%;
+  position: relative;
+  &__input {
+    width: 100%;
+
+    height: 5vh;
+    min-height: 30px;
+    padding-left: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+    // outline: none;
+    background: #141414;
+    color: white;
+    // position: absolute;
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 0;
+    right: 1%;
+    cursor: pointer;
+    height: 5vh;
+    background: none;
+    border: none;
+    &:before {
+      content: "\f002";
+      font-family: FontAwesome;
+      // font-size: 16px;
+      color: #ffffff;
+      // background:none;
+    }
+  }
+}
+// .search {
+//   position: absolute;
+//   top: 0;
+//   right: 0px;
+//   width: 42px;
+//   height: 42px;
+//   border: none;
+
+//   cursor: pointer;
+// }
+// .search:before {
+//   content: "\f002";
+//   font-family: FontAwesome;
+//   font-size: 16px;
+//   color: #ffffff;
+// }
+::placeholder {
+  color: white;
+  opacity: 0.7;
+  font-size: 16px;
+  font-family: roboto-r;
+}
