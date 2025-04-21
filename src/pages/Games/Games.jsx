@@ -5,7 +5,7 @@ export default function Games() {
   return (
     <div>
       <TitleH2 title="Игры" />
-      <Search />
+      {/* <Search placeholder= "Введите название игры"/> */}
       <GamesMain />
     </div>
   );

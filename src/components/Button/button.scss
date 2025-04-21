@@ -6,8 +6,8 @@
   background: #ff4e53;
   border-radius: 10px;
   text-decoration: none;
-
   border: none;
+
   &__link {
     padding: 15px 80px;
     font-size: clamp(12px, 1.2vw, 18px);
@@ -15,6 +15,11 @@
 
   &__modal {
     padding: 12px 25px;
+    font-size: clamp(12px, 1.2vw, 16px);
+  }
+  &__submit {
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-size: clamp(12px, 1.2vw, 16px);
   }
 

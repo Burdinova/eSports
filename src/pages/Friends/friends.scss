@@ -1,0 +1,41 @@
+.friend-user-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .nickname {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .friend-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .friend-button.add {
+    background-color: red;
+    color: white;
+  }
+  
+  .friend-button.sent {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+  }
+  

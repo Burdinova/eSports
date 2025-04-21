@@ -1,37 +1,7 @@
 @import url("../../fonts.scss");
-
 .create-team-form {
   display: flex;
   flex-direction: column;
   font-family: roboto-r;
   gap: 16px;
-}
-.field-wrapper {
-    display: flex;
-    flex-direction: column;
-}
-
-.field-label {
-  //   display: flex;
-  //   flex-direction: column;
-  font-size: clamp(12px, 2vw, 18px);
-//   margin-bottom: 2px;
-  margin-bottom: 1%;
-  // padding-bottom: 10%;
-  // color: #444;
-}
-
-.text-input,
-.textarea-input {
-  padding: 8px;
-  border-radius: 6px;
-  // border: 1px solid #ccc;
-  border: none;
-  font-size: 14px;
-  font-family: inherit;
-}
-
-.textarea-input {
-  resize: vertical;
-  min-height: 80px;
 }

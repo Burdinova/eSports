@@ -1,4 +1,4 @@
-import "./test.scss";
+import "./commands.scss";
 import { useState } from "react";
 
 import { commands, requests_commands } from "../../helpers/commands.js";
@@ -33,11 +33,7 @@ export default function Commands() {
   ];
 
   return (
-    <div
-    // style={{
-    // marginTop:"3.5vw",
-    // }}
-    >
+    <div>
       <div className="title-with-button">
         <TitleH2 title="Команды" />
         <ModalButton
@@ -45,12 +41,6 @@ export default function Commands() {
           onClick={() => setIsModalOpen(true)}
         />
       </div>
-
-      {/* <TitleButton
-        title="Команды"
-        text="Создать команду"
-        onClick={() => setIsModalOpen(true)}
-      /> */}
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <CreateTeamForm onSubmit={handleCreateTeam} />
