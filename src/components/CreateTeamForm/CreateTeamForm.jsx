@@ -11,19 +11,19 @@ export default function CreateTeamForm({ onSubmit }) {
   const [description, setDescription] = useState("");
   const [logoFile, setLogoFile] = useState(null);
 
-  const [wasSubmitted, setWasSubmitted] = useState(false);
+  // const [wasSubmitted, setWasSubmitted] = useState(false);
 
-  const isTeamNameInvalid = teamName.trim() === "";
-  const isLogoInvalid = !logoFile;
+  // const isTeamNameInvalid = teamName.trim() === "";
+  // const isLogoInvalid = !logoFile;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ teamName, description, logoFile });
   };
 
-  const handleFileChange = (e) => {
-    setLogoFile(e.target.files[0]);
-  };
+  // const handleFileChange = (e) => {
+  //   setLogoFile(e.target.files[0]);
+  // };
 
   return (
     <form className="create-team-form" onSubmit={handleSubmit}>

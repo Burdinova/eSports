@@ -49,7 +49,7 @@ export default function Friends() {
   return (
     <div>
       <div className="title-with-button">
-        <TitleH2 title="Друзья" style="indent"/>
+        <TitleH2 title="Друзья" style="indent" />
         <ModalButton
           text="Добавить друга"
           onClick={() => {
@@ -60,21 +60,16 @@ export default function Friends() {
       </div>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-<TitleH2 title="Добавить друга" />
-        <Search placeholder="Введите ник" value={query} onChange={setQuery} />
+        <TitleH2 title="Добавить друга" />
+        <Search
+          placeholder="Введите ник"
+          value={query}
+          onChange={setQuery}
+          style="inverse"
+        />
 
         {query && (
           <div className="friend-results">
-            {/* {filteredFriends.length > 0 ? (
-              filteredFriends.map((user) => (
-                <div key={user.id} className="friend-user">
-                  {user.name}
-                </div>
-              ))
-            ) : (
-              <div className="friend-user empty">Никого не найдено</div>
-            )} */}
-
             {filteredFriends.length > 0 ? (
               filteredFriends.map((user) => (
                 <div key={user.id} className="friend-user">
@@ -85,10 +80,17 @@ export default function Friends() {
                       {user.name}
                     </span>
                     <button
-                      className={`friend-button add ${disabledUsers.has(user.id) ? "sent" : ""}`}
-                      onClick={() => !disabledUsers.has(user.id) && handleSendRequest(user.id)}
+                      className={`friend-button add ${
+                        disabledUsers.has(user.id) ? "sent" : ""
+                      }`}
+                      onClick={() =>
+                        !disabledUsers.has(user.id) &&
+                        handleSendRequest(user.id)
+                      }
                       disabled={disabledUsers.has(user.id)}
-                    >+</button>
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
               ))

@@ -4,9 +4,10 @@
 // font-family: roboto-r;
     display: flex;
     flex-direction: column;
+    font-family: roboto-r;
   }
   .field-label {
-    font-size: clamp(12px, 1.2vw, 16px);
+    font-size: clamp(12px, 2vw, 16px);
     margin-bottom: 1%;
   }
   .text-input,
@@ -15,7 +16,7 @@
     border-radius: 6px;
     border: none;
     font-size: 14px;
-    font-family: inherit;
+    
   }
   .textarea-input {
     resize: vertical;

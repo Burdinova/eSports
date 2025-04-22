@@ -3,6 +3,7 @@
     align-items: center;
     gap: 10px;
     margin: 8px 0;
+// gap: 100px;
   }
   
   .avatar {
@@ -29,7 +30,7 @@
   }
   
   .friend-button.add {
-    background-color: red;
+    background-color: #ff4e53;
     color: white;
   }
   
@@ -38,4 +39,3 @@
     color: white;
     cursor: not-allowed;
   }
-  
