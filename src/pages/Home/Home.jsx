@@ -27,7 +27,7 @@ export default function Home() {
         linkText="Найти турнир"
         image="src/images/Ghostrunner.png"
       />
-      <TitleH2 title="Просмотр игр" />
+      <TitleH2 title="Просмотр игр" style="indent"/>
       <GamesMain />
       <Card
         reverse={true}
@@ -36,7 +36,7 @@ export default function Home() {
         linkText="Создать турнир"
         image="src/images/sova.png"
       />
-      <TitleH2 title="Популярные турниры" />
+      <TitleH2 title="Популярные турниры" style="indent"/>
       <Tournaments />
       <Footer />
     </div>

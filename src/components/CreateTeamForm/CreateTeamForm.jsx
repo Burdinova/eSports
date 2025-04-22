@@ -4,18 +4,17 @@ import AvatarUploader from "./AvatarUploader";
 import TextInput from "../InputFields/TextInput";
 import TextareaField from "../InputFields/TextareaField";
 import SubmitButton from "../Button/SubmitButton";
+import TitleH2 from "../TitleH2/TitleH2";
 
 export default function CreateTeamForm({ onSubmit }) {
   const [teamName, setTeamName] = useState("");
   const [description, setDescription] = useState("");
   const [logoFile, setLogoFile] = useState(null);
 
-
   const [wasSubmitted, setWasSubmitted] = useState(false);
 
   const isTeamNameInvalid = teamName.trim() === "";
   const isLogoInvalid = !logoFile;
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +27,8 @@ export default function CreateTeamForm({ onSubmit }) {
 
   return (
     <form className="create-team-form" onSubmit={handleSubmit}>
-      <h2>Создание команды</h2>
+      {/* <h2>Создание команды</h2> */}
+      <TitleH2 title="Создание команды" />
       <AvatarUploader onChange={(file) => setLogoFile(file)} />
 
       <TextInput

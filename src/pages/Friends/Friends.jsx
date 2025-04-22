@@ -49,7 +49,7 @@ export default function Friends() {
   return (
     <div>
       <div className="title-with-button">
-        <TitleH2 title="Друзья" />
+        <TitleH2 title="Друзья" style="indent"/>
         <ModalButton
           text="Добавить друга"
           onClick={() => {
@@ -60,6 +60,7 @@ export default function Friends() {
       </div>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+<TitleH2 title="Добавить друга" />
         <Search placeholder="Введите ник" value={query} onChange={setQuery} />
 
         {query && (

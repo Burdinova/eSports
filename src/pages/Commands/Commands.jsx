@@ -35,7 +35,7 @@ export default function Commands() {
   return (
     <div>
       <div className="title-with-button">
-        <TitleH2 title="Команды" />
+        <TitleH2 title="Команды" style="indent"/>
         <ModalButton
           text="Создать команду"
           onClick={() => setIsModalOpen(true)}

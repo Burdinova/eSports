@@ -4,7 +4,7 @@ import Search from "../../components/Search/Search.jsx";
 export default function Games() {
   return (
     <div>
-      <TitleH2 title="Игры" />
+      <TitleH2 title="Игры" style="indent"/>
       {/* <Search placeholder= "Введите название игры"/> */}
       <GamesMain />
     </div>
