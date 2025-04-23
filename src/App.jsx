@@ -6,14 +6,14 @@ import Home from "./pages/Home/Home";
 import Games from "./pages/Games/Games";
 import Friends from "./pages/Friends/Friends.jsx";
 import Commands from "./pages/Commands/Commands.jsx";
-// import HeaderLogIn from "./components/Header/HeaderLogIn.jsx";
+import HeaderLogIn from "./components/Header/HeaderLogIn.jsx";
 
 function App() {
   return (
     <div className="App">
       <Sidebar />
-      {/* <HeaderLogIn /> */}
-      <Header />
+      <HeaderLogIn />
+      {/* <Header /> */}
       <div
         className="MainWrapper"
         style={{

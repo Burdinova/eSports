@@ -9,7 +9,7 @@ import SubmitButton from "../Button/SubmitButton.jsx";
 export default function HeaderLogIn() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [email, setTeamName] = useState("");
+  const [email, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -18,21 +18,59 @@ export default function HeaderLogIn() {
     { id: "login", label: "Вход" },
     { id: "register", label: "Зарегистрироваться" },
   ];
+  const resetForm = () => {
+    setName("");
+    setPassword("");
+    setConfirmPassword("");
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      alert("Введите почту и пароль.");
+      return;
+    }
+    console.log("Вход:", { email, password });
+    alert("Успешный вход (пока только имитация)");
+    // Тут будет запрос к серверу
+
+    resetForm();
+    setIsModalOpen(false);
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    if (!email || !password || !confirmPassword) {
+      alert("Пожалуйста, заполните все поля.");
+      return;
+    }
+    if (password !== confirmPassword) {
+      alert("Пароли не совпадают.");
+      return;
+    }
+    console.log("Регистрация:", { email, password, confirmPassword });
+    alert("Регистрация успешна (пока без сервера)");
+    // Тут будет запрос на регистрацию
+
+    resetForm();
+    setIsModalOpen(false);
+  };
+
 
   return (
     <div className="header">
       {/* <div className="header__item"> */}
       <ModalButton text="Вход" onClick={() => setIsModalOpen(true)} />
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <Modal isOpen={isModalOpen} onClose={() => {setIsModalOpen(false); resetForm();}}>
         <TabSwich tabs={tabs} activeTab={activeTab} onTabClick={setActiveTab} />
 
         {activeTab === "login" ? (
-          <div className="header__i">
+          <form className="header__form"  onSubmit={handleLogin}>
             <TextInput
               id="email"
               label="Почта:"
               value={email}
-              onChange={(e) => setTeamName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Введите почту"
             />
             <TextInput
@@ -44,14 +82,14 @@ export default function HeaderLogIn() {
               placeholder="Введите пароль"
             />
             <SubmitButton text="Войти" />
-          </div>
+          </form>
         ) : (
-          <div className="header__i">
+          <form className="header__form" onSubmit={handleRegister}>
             <TextInput
               id="email"
               label="Почта:"
               value={email}
-              onChange={(e) => setTeamName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Введите почту"
             />
             <TextInput
@@ -71,7 +109,7 @@ export default function HeaderLogIn() {
               placeholder="Повторите пароль"
             />
             <SubmitButton text="Зарегистрироваться" />
-          </div>
+          </form>
         )}
       </Modal>
       {/* </div> */}
