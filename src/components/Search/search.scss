@@ -4,12 +4,12 @@
   margin-bottom: 1.2%;
   position: relative;
 
+
   &__input {
     width: 100%;
-
-    height: 5vh;
-    min-height: 30px;
-    max-height: 100px;
+    height: 2vw;
+    align-items: center;
+    min-height: 36px;
     padding-left: 10px;
     border: 2px solid white;
     border-radius: 10px;
@@ -17,6 +17,8 @@
     background: #141414;
     color: white;
     // position: absolute;
+    font-size: 16px;
+    font-family: roboto-r;
 
     &::-webkit-search-cancel-button {
       display: none;
@@ -25,41 +27,32 @@
 
   &__button {
     position: absolute;
-    top: 0;
+    top: 50%; /* Выравниваем кнопку по центру */
+    transform: translateY(-50%); /* Центруем кнопку вертикально */
     right: 0.5%;
     cursor: pointer;
-    height: 5vh;
+    height: 100%;
     background: none;
     border: none;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
-    // &:before {
-    //   content: "\f002";
-    //   font-family: FontAwesome;
-    //   margin-right: 0.5em;
-    //   // font-size: 16px;
-    //   color: #ffffff;
-    //   // background:none;
-    // }
   }
   &__svg {
     fill: white;
-    height: 60%;
+    height: 80%;
     align-items: center;
   }
   &::placeholder {
     color: white;
     opacity: 0.7;
-    font-size: 16px;
-    font-family: roboto-r;
+    // font-size: 18px;
+    // font-family: roboto-r;
   }
 }
 
 .inverse {
-  // border: 2px solid #000000;
   background: white;
   color: #141414;
   &::placeholder {
@@ -70,5 +63,7 @@
   }
   &.search__svg {
     fill: black;
+    background-color: transparent;
+    // opacity: 0.7;
   }
 }

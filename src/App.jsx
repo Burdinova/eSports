@@ -7,6 +7,7 @@ import Games from "./pages/Games/Games";
 import Friends from "./pages/Friends/Friends.jsx";
 import Commands from "./pages/Commands/Commands.jsx";
 import HeaderLogIn from "./components/Header/HeaderLogIn.jsx";
+import AboutGame from "./pages/Games/AboutGame.jsx";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/games" element={<Games />} />
           <Route path="/friends" element={<Friends />} />
           <Route path="/commands" element={<Commands />} />
+          <Route path="/about-game/:id" element={<AboutGame />} /> {/* Теперь принимаем id игры */}
         </Routes>
       </div>
     </div>
