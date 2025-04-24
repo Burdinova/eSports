@@ -60,7 +60,7 @@ export default function HeaderLogIn() {
   return (
     <div className="header">
       {/* <div className="header__item"> */}
-      <ModalButton text="Вход" onClick={() => setIsModalOpen(true)} />
+      <ModalButton  text="Вход" onClick={() => setIsModalOpen(true)} />
       <Modal isOpen={isModalOpen} onClose={() => {setIsModalOpen(false); resetForm();}}>
         <TabSwich tabs={tabs} activeTab={activeTab} onTabClick={setActiveTab} />
 

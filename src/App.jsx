@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="App">
       <Sidebar />
-      <HeaderLogIn />
-      {/* <Header /> */}
+      {/* <HeaderLogIn /> */}
+      <Header />
       <div
         className="MainWrapper"
         style={{
@@ -37,7 +37,7 @@ function App() {
           <Route path="/games" element={<Games />} />
           <Route path="/friends" element={<Friends />} />
           <Route path="/commands" element={<Commands />} />
-          <Route path="/about-game/:id" element={<AboutGame />} /> {/* Теперь принимаем id игры */}
+          <Route path="/games/:id" element={<AboutGame />} /> {/* Теперь принимаем id игры */}
         </Routes>
       </div>
     </div>

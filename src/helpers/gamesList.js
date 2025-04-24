@@ -8,7 +8,7 @@ const games = [
   },
   {
     id: 2,
-    title: "Dota 2",
+    title: "Valorant",
     img: game1,
   },
   {

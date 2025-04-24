@@ -12,7 +12,7 @@
 
   min-height: 40px;
   position: fixed;
-  padding: 0.3% 0.5%;
+  padding: 0.3% 1%;
   // margin-bottom: 300px;
 
   &__item {
@@ -42,9 +42,6 @@
     height: 60%;
     width: auto;
     fill: white;
-    // aspect-ratio: 1;
-    // align-items: center;
-    // outline: 1px solid red;
   }
 }
 
@@ -61,9 +58,6 @@
   display: flex;
   flex-direction: column;
 
-  // &__notification {
-  //   width: 15vw;
-  // }
   &__profile {
     width: 8vw;
   }
@@ -86,12 +80,6 @@
     background-color: #ffffff;
   }
 }
-// .header__icon-wrapper {
-//   position: relative;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
 
 .header__indicator {
   position: absolute;
@@ -99,15 +87,11 @@
   right: 34%;
   width: 12%;
   aspect-ratio: 1;
-  // height: 30%;
   background-color: #ff4e53;
   border-radius: 50%;
   pointer-events: none;
 }
 
-// .profile {
-// border-radius: 50%;
-// }
 .header__form {
 display: flex;
 flex-direction: column;

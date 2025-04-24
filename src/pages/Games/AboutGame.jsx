@@ -1,40 +1,72 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 
-import Game from "../../components/Games/Game";
 import { games } from "../../helpers/gamesList";
-import TitleH2 from '../../components/TitleH2/TitleH2';
+import { allTournaments } from "../../helpers/tournamentsList";
+import TitleH2 from "../../components/TitleH2/TitleH2";
 import "./aboutGame.scss";
-import TabSwich from '../../components/TabSwitch/TabSwith';
+import TabSwich from "../../components/TabSwitch/TabSwith";
+import Tournaments from "../../components/Tournaments/Tournaments";
 
 export default function AboutGame() {
+  const { id } = useParams(); // Получаем id игры из URL
+  const gameInfo = games.find((game) => game.id.toString() === id); // Преобразование id в строку для сравнения
+  const [activeTab, setActiveTab] = useState("review");
+  const tabs = [
+    { id: "review", label: "Обзор" },
+    { id: "tournament", label: "Турниры" },
+    { id: "rating", label: "Рейтинг" },
+  ];
 
-    const { id } = useParams(); // Получаем id игры из URL
-    const gameInfo = games.find((game) => game.id.toString() === id); // Преобразование id в строку для сравнения
-    const [activeTab, setActiveTab] = useState("review");
-    const tabs = [
-        { id: "review", label: "Обзор" },
-        { id: "tournament", label: "Турнир" },
-        { id: "rating", label: "Рейтинг" },
-    ];
+  const [tournamentFilter, setTournamentFilter] = useState("upcoming");
 
-    if (!gameInfo) {
-        return <p>Игра не найдена.</p>; // Сообщение об ошибке, если игра не найдена
-    }
+  const filteredTournaments = allTournaments.filter(
+    (t) => t.status === tournamentFilter
+  );
 
-    // console.log(activeTab);
+  if (!gameInfo) {
+    return <p>Игра не найдена.</p>; // Сообщение об ошибке, если игра не найдена
+  }
 
-    return (
-        <div>
-            <div className="aboutgame__header">
-                {/* <TitleH2 title={gameInfo.title} /> */}
-                <img className="aboutgame__header-image" src={gameInfo?.img ?? ''} alt="" />
-                <TitleH2 className="aboutgame__header-title" title={gameInfo?.title ?? 'Название неизвестно'} />
-                {/* <Game title={gameInfo.title} img={gameInfo.img}/> */}
-            </div>
-            <div className='aboutgame__section'>
-                <TabSwich tabs={tabs} activeTab={activeTab} onTabClick={setActiveTab} />
-            </div>
-        </div>
-    );
+  return (
+    <div className="aboutgame">
+      <div className="aboutgame__header">
+        <img
+          className="aboutgame__header-image"
+          src={gameInfo?.img ?? ""}
+          alt=""
+        />
+        <TitleH2
+          style="aboutgame__header-title"
+          title={gameInfo?.title ?? "Название неизвестно"}
+        />
+      </div>
+      <div className='aboutgame__tab'>
+      <TabSwich tabs={tabs} activeTab={activeTab} onTabClick={setActiveTab} />
+      </div>
+
+      {activeTab === "tournament" && (
+        <>
+          <div className="aboutgame__filter">
+            <select
+              value={tournamentFilter}
+              onChange={(e) => setTournamentFilter(e.target.value)}
+            >
+              <option value="upcoming">Предстоящие</option>
+              <option value="current">Текущие</option>
+              <option value="finished">Завершённые</option>
+            </select>
+          </div>
+
+          <div className="aboutgame__tournaments">
+            {filteredTournaments.length > 0 ? (
+              <Tournaments array={filteredTournaments} />
+            ) : (
+              <p>Нет турниров по выбранному фильтру.</p>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
 }

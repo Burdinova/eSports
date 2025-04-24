@@ -5,6 +5,7 @@ import GamesMain from "../../components/Games/GamesMain.jsx";
 import TitleH2 from "../../components/TitleH2/TitleH2.jsx";
 import Tournaments from "../../components/Tournaments/Tournaments.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
+import { tournaments } from "../../helpers/tournamentsList";
 // import Header from "../../components/Header/Header.jsx";
 
 export default function Home() {
@@ -37,7 +38,7 @@ export default function Home() {
         image="src/images/sova.png"
       />
       <TitleH2 title="Популярные турниры" style="indent"/>
-      <Tournaments />
+      <Tournaments array={tournaments}/>
       <Footer />
     </div>
   );
