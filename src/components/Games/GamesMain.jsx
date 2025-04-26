@@ -7,7 +7,7 @@ export default function GamesMain() {
     <div>
       <ul className="games">
         {games.map((game) => {
-          return <Game id={game.id} title={game.title} img={game.img} />;
+          return <Game key={game.id} id={game.id} title={game.title} img={game.img} />;
         })}
       </ul>
     </div>

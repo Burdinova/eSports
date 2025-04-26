@@ -18,6 +18,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  max-height: 80vh; /* Ограничиваем максимальную высоту модального окна */
+  overflow-y: auto; /* Если контент больше, появляется прокрутка */
 }
 
 .modal-close {

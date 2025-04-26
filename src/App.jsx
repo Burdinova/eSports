@@ -10,6 +10,9 @@ import HeaderLogIn from "./components/Header/HeaderLogIn.jsx";
 import AboutGame from "./pages/Games/AboutGame.jsx";
 import Tournaments from "./pages/UserTournaments/UserTournaments.jsx";
 
+import Profile from "./pages/Profiles/Profile.jsx"
+import MyProfile from "./pages/Profiles/MyProfile.jsx"; // Твой личный проф
+
 function App() {
   return (
     <div className="App">
@@ -38,8 +41,17 @@ function App() {
           <Route path="/games" element={<Games />} />
           <Route path="/friends" element={<Friends />} />
           <Route path="/commands" element={<Commands />} />
-          <Route path="/games/:id" element={<AboutGame />} /> {/* Теперь принимаем id игры */}
+          <Route path="/games/:id" element={<AboutGame />} />{" "}
+          {/* Теперь принимаем id игры */}
           <Route path="/tournaments" element={<Tournaments />} />
+
+
+        {/* Личный профиль */}
+        <Route path="/profile" element={<MyProfile />} />
+        
+        {/* Профиль другого пользователя по id */}
+        <Route path="/profile/:id" element={<Profile />} />
+
         </Routes>
       </div>
     </div>

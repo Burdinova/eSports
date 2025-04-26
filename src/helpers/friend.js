@@ -16,6 +16,7 @@ export const requests = [
 { id: 44, avatar: "src/images/game1.jpg", name: "Макс" },
 { id: 55, avatar: "src/images/game1.jpg", name: "Макс" },
 { id: 56, avatar: "src/images/game1.jpg", name: "Макс" },
+{ id: 57, avatar: "src/images/game1.jpg", name: "Макс" },
 ];
 
 //заявки от нас
@@ -48,4 +49,11 @@ export const allusers = [
   { id: 64, avatar: "src/images/game1.jpg", name: "мфй" },
   { id: 55, avatar: "src/images/game1.jpg", name: "рп" },
   { id: 66, avatar: "src/images/game1.jpg", name: "шг" },
+  { id: 58, avatar: "src/images/game1.jpg", name: "Макс" },
+  { id: 59, avatar: "src/images/game1.jpg", name: "Макс" },
+  { id: 100, avatar: "src/images/game1.jpg", name: "Макс" },
+  { id: 101, avatar: "src/images/game1.jpg", name: "Макс" },
+  { id: 102, avatar: "src/images/game1.jpg", name: "Макс" },
+  { id: 103, avatar: "src/images/game1.jpg", name: "Макс" },
+
 ];

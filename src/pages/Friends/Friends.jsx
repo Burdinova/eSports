@@ -1,6 +1,7 @@
 import "./friends.scss";
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { friends, requests, allusers } from "../../helpers/friend.js";
 
@@ -75,10 +76,16 @@ export default function Friends() {
                 <div key={user.id} className="friend-user">
                   {/* Отображение аватара, ника и кнопки */}
                   <div className="friend-user-row">
+<div className="friend-user-row__left">
+                  <Link to={`/profile/${user.id}`} className="friend-link">
                     <img src={user.avatar} alt="avatar" className="avatar" />
+                    </Link>
+                    <Link to={`/profile/${user.id}`} className="friend-link">
                     <span className="nickname" title={user.name}>
                       {user.name}
                     </span>
+                    </Link> 
+                    </div>
                     <button
                       className={`friend-button add ${
                         disabledUsers.has(user.id) ? "sent" : ""
