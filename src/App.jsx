@@ -8,6 +8,7 @@ import Friends from "./pages/Friends/Friends.jsx";
 import Commands from "./pages/Commands/Commands.jsx";
 import HeaderLogIn from "./components/Header/HeaderLogIn.jsx";
 import AboutGame from "./pages/Games/AboutGame.jsx";
+import Tournaments from "./pages/UserTournaments/UserTournaments.jsx";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/friends" element={<Friends />} />
           <Route path="/commands" element={<Commands />} />
           <Route path="/games/:id" element={<AboutGame />} /> {/* Теперь принимаем id игры */}
+          <Route path="/tournaments" element={<Tournaments />} />
         </Routes>
       </div>
     </div>

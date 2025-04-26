@@ -97,30 +97,6 @@ export default function Friends() {
             ) : (
               <div className="friend-user empty">Никого не найдено</div>
             )}
-
-            {/* {filteredFriends.length > 0 ? (
-              filteredFriends.map((user) => {
-                const isSent = sentRequests.includes(user.id);
-
-                return (
-                  <div key={user.id} className="friend-user-row">
-                    <img src={user.avatar} alt="avatar" className="avatar" />
-                    <span className="nickname" title={user.name}>
-                      {user.name}
-                    </span>
-                    <button
-                      className={`friend-button ${isSent ? "sent" : "add"}`}
-                      onClick={() => !isSent && handleSendRequest(user.id)}
-                      disabled={isSent}
-                    >
-                      +
-                    </button>
-                  </div>
-                );
-              })
-            ) : (
-              <div className="friend-user empty">Никого не найдено</div>
-            )} */}
           </div>
         )}
       </Modal>
