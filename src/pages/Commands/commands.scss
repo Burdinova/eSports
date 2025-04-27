@@ -1,12 +1,16 @@
 .title-with-button {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: clamp(30px, 8vw, 80px);
-    margin-bottom: clamp(20px, 8vw, 35px);
-// background: red;
-  
-    .title-h2 {
-      margin: 0; // перезаписываем только тут
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: clamp(30px, 8vw, 80px);
+  margin-bottom: clamp(20px, 8vw, 35px);
+  // background: red;
+
+  .title-h2 {
+    margin: 0; // перезаписываем только тут
   }
+}
+
+.tab-content {
+  margin-top: clamp(20px, 8vw, 35px);
+}

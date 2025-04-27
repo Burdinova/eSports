@@ -70,24 +70,28 @@ export default function Friends() {
         />
 
         {query && (
-          <div className="friend-results">
+          <div className="friends__results">
             {filteredFriends.length > 0 ? (
               filteredFriends.map((user) => (
-                <div key={user.id} className="friend-user">
+                <div key={user.id} className="friends__user">
                   {/* Отображение аватара, ника и кнопки */}
-                  <div className="friend-user-row">
-<div className="friend-user-row__left">
-                  <Link to={`/profile/${user.id}`} className="friend-link">
-                    <img src={user.avatar} alt="avatar" className="avatar" />
-                    </Link>
-                    <Link to={`/profile/${user.id}`} className="friend-link">
-                    <span className="nickname" title={user.name}>
-                      {user.name}
-                    </span>
-                    </Link> 
+                  <div className="friends__user-row">
+                    <div className="friends__user-left">
+                      <Link to={`/profile/${user.id}`} className="friends__link">
+                        <img
+                          src={user.avatar}
+                          alt="avatar"
+                          className="friends__avatar"
+                        />
+                      </Link>
+                      <Link to={`/profile/${user.id}`} className="friends__link">
+                        <span className="friends__nickname" title={user.name}>
+                          {user.name}
+                        </span>
+                      </Link>
                     </div>
                     <button
-                      className={`friend-button add ${
+                      className={`friends__button add ${
                         disabledUsers.has(user.id) ? "sent" : ""
                       }`}
                       onClick={() =>
@@ -102,7 +106,7 @@ export default function Friends() {
                 </div>
               ))
             ) : (
-              <div className="friend-user empty">Никого не найдено</div>
+              <div className="friends__user empty">Никого не найдено</div>
             )}
           </div>
         )}
@@ -110,7 +114,7 @@ export default function Friends() {
 
       <TabSwich tabs={tabs} activeTab={activeTab} onTabClick={setActiveTab} />
 
-      <div className="tab-content">
+      <div className="friends__tab-content">
         {activeTab === "friends" ? (
           <RoundCards users={friends} isRequest={false} />
         ) : (
