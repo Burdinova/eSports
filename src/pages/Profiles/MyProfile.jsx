@@ -8,6 +8,8 @@ import TextInput from "../../components/InputFields/TextInput";
 import Modal from "../../components/Modal/Modal";
 import ModalButton from "../../components/Button/ModalButton";
 import GamesMain from "../../components/Games/GamesMain";
+import SubmitButton from "../../components/Button/SubmitButton";
+import GameAccount from "../../components/Games/GameAccount";
 
 // import SubmitButton from "../../components/Button/SubmitButton";
 
@@ -21,30 +23,30 @@ const user = {
 };
 
 export default function MyProfile() {
+  //Аватар
   const [avatar, setAvatar] = useState(user.avatar || defaultAvatar);
   const [isLoading, setIsLoading] = useState(false);
+  // Настройки профиля
   const [formValues, setFormValues] = useState({
     currentPassword: "",
     newPassword: "",
     confirmNewPassword: "",
     name: user.name,
   });
-
+  const [error, setError] = useState("");
+  // Модалка "Добавить аккаунт"
+  const [gameNickname, setGameNickname] = useState("");
+  const [selectedGame, setSelectedGame] = useState(null); // Состояние для выбранной игры
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedGame(null); // сбрасываем выбранную игру при закрытии модалки
   };
 
-  const [error, setError] = useState("");
-
-
-  const [selectedGame, setSelectedGame] = useState(null); // Состояние для выбранной игры
   const handleGameSelect = (game) => {
     setSelectedGame(game); // Устанавливаем выбранную игру
   };
-
-
 
   // Обработчик загрузки нового аватара
   const handleAvatarChange = async (e) => {
@@ -114,6 +116,33 @@ export default function MyProfile() {
     }
   };
 
+  const handleDeleteGameAccount = async (id) => {
+    try {
+      // отправляем запрос на сервер для удаления
+      // пример:
+      // await fetch(`/api/game-accounts/${id}`, { method: "DELETE" });
+      // const response = await fetch(`/api/game-accounts/${id}`, { method: "DELETE" });
+
+      // if (!response.ok) {
+      //   throw new Error("Ошибка на сервере");
+      // }
+
+      console.log(`Отправлен запрос на удаление аккаунта с id ${id}`);
+
+      // после успешного ответа удаляем из локального состояния
+      setGameAccounts((prev) => prev.filter((account) => account.id !== id));
+      // console.log({ gameAccounts });
+    } catch (error) {
+      console.error("Ошибка удаления аккаунта:", error);
+      alert("Не удалось удалить аккаунт. Попробуйте ещё раз.");
+    }
+  };
+
+  const [gameAccounts, setGameAccounts] = useState([
+    { id: 1, nickname: "PlayerOne", title: "Dota 2", image: defaultAvatar },
+    { id: 2, nickname: "GamerGirl", title: "Valorant", image: defaultAvatar },
+  ]);
+
   return (
     <div className="profile">
       <div className="profile__avatar">
@@ -150,24 +179,56 @@ export default function MyProfile() {
           <h3 className="profile__window-title">Игровые аккаунты</h3>
           <ModalButton
             text="Добавить аккаунт"
-            onClick={() => {
-              setIsModalOpen(true);
-            }}
+            onClick={() => setIsModalOpen(true)}
           />
+
+          <div className="gameAccountsList">
+            {gameAccounts.map((account) => (
+              <GameAccount
+                key={account.id}
+                id={account.id}
+                title={account.title}
+                nickname={account.nickname}
+                image={account.image}
+                onDelete={handleDeleteGameAccount}
+              />
+            ))}
+          </div>
         </div>
 
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-          <TitleH2 title="Выберите игру" />
-          {/* <GamesMain style="modal" /> */}
+          <TitleH2 title="Добавить игровой аккаунт" />
 
           {selectedGame ? (
-          // Если игра выбрана, отображаем форму для ввода текста
-          <div>fghj</div>
-        ) : (
-          // Если игра не выбрана, отображаем список игр
-          <GamesMain style="modal" onSelectGame={handleGameSelect} />
-        )}
+            <form
+              className="gameNickname__form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                console.log("Игра:", selectedGame);
+                console.log("Игровой ник:", gameNickname);
+                // Здесь потом будет отправка на сервер
 
+                // После успешной отправки:
+                setGameNickname(""); // очищаем поле
+                setSelectedGame(null); // сбрасываем выбранную игру
+                setIsModalOpen(false); // закрываем модалку
+              }}
+            >
+              {/* Если игра выбрана, отображаем форму для ввода текста */}
+              <TextInput
+                id="gameNickname"
+                label="Ник в игре:"
+                value={gameNickname}
+                onChange={(e) => setGameNickname(e.target.value)}
+                placeholder="Введите ник"
+              />
+              <SubmitButton text="Создать" />
+            </form>
+          ) : (
+            // <div>fghj</div>
+            // Если игра не выбрана, отображаем список игр
+            <GamesMain style="modal" onSelectGame={handleGameSelect} />
+          )}
         </Modal>
 
         <div className="profile__window profile__window--right">
@@ -179,7 +240,7 @@ export default function MyProfile() {
             value={user.email}
             // onChange={() => {}}
             placeholder="Ваш email"
-            disabled="true"
+            disabled={true}
             style={{ backgroundColor: "#f0f0f0", cursor: "not-allowed" }}
           />
           <TextInput
