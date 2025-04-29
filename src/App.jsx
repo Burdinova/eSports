@@ -9,6 +9,7 @@ import Commands from "./pages/Commands/Commands.jsx";
 import HeaderLogIn from "./components/Header/HeaderLogIn.jsx";
 import AboutGame from "./pages/Games/AboutGame.jsx";
 import Tournaments from "./pages/UserTournaments/UserTournaments.jsx";
+import NewTournament from "./pages/NewTournament/NewTournament.jsx";
 
 import Profile from "./pages/Profiles/Profile.jsx"
 import MyProfile from "./pages/Profiles/MyProfile.jsx"; // Твой личный проф
@@ -51,7 +52,7 @@ function App() {
         
         {/* Профиль другого пользователя по id */}
         <Route path="/profile/:id" element={<Profile />} />
-
+        <Route path="/newtournament" element={<NewTournament />} />
         </Routes>
       </div>
     </div>
