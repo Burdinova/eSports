@@ -1,0 +1,57 @@
+.newtournament {
+  margin-top: clamp(30px, 8vw, 80px);
+  font-family: roboto-r;
+
+  &__header {
+    display: flex;
+    align-items: end;
+    padding-bottom: clamp(20px, 8vw, 35px);
+    gap: 3%;
+
+    .avatar-uploader {
+      width: calc((100% - 20px * 3) / 4);
+      // width: 15%;
+      // height: 10px;
+      height: clamp(120px, 11vw, 200px);
+      // aspect-ratio: 1.5;
+      min-width: 80px;
+      border-radius: 0;
+    }
+    &-left {
+      display: flex;
+      flex-direction: column;
+      // font-family: roboto-r;
+      // gap: 1px;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+  }
+  &__checkbox {
+    input {
+      margin-right: 1%;
+    }
+  }
+
+  &__amount-radio {
+    display: flex;
+    flex-direction: column;
+
+    .radio-group {
+      display: flex;
+      gap: 1%;
+    }
+    .radio-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1%;
+    }
+    input {
+      display: flex;
+    }
+  }
+}

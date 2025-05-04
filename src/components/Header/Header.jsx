@@ -24,7 +24,7 @@ export default function Header() {
 
   return (
     <div className="header">
-      <div className="header__item" ref={profileRef}>
+      {/* <div className="header__item" ref={profileRef}>
         <Link
           to="/notifications"
           className="header__button"
@@ -33,7 +33,7 @@ export default function Header() {
           <NotificationsIcon className="header__icon" />
           {hasNotifications && <span className="header__indicator" />}
         </Link>
-      </div>
+      </div> */}
 
       <div className="header__item" ref={profileRef}>
         <button

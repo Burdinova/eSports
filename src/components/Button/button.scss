@@ -18,10 +18,17 @@
     font-size: clamp(12px, 1.2vw, 16px);
   }
   &__submit {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    // padding-top: 10px;
+    padding: 10px;
+    // padding-bottom: 10px;
     font-size: clamp(12px, 1.2vw, 16px);
   }
+    &__submit.sent {
+      background-color: gray;
+      color: white;
+      cursor: not-allowed;
+    }
+  
 
   @media (max-width: 1300px) {
     padding: 8px 18px;

@@ -39,7 +39,7 @@
     }
   }
   &__icon {
-    height: 60%;
+    height: 60%;  
     width: auto;
     fill: white;
   }
@@ -81,16 +81,16 @@
   }
 }
 
-.header__indicator {
-  position: absolute;
-  top: 20%;
-  right: 34%;
-  width: 12%;
-  aspect-ratio: 1;
-  background-color: #ff4e53;
-  border-radius: 50%;
-  pointer-events: none;
-}
+// .header__indicator {
+//   position: absolute;
+//   top: 20%;
+//   right: 34%;
+//   width: 12%;
+//   aspect-ratio: 1;
+//   background-color: #ff4e53;
+//   border-radius: 50%;
+//   pointer-events: none;
+// }
 
 .header__form {
 display: flex;

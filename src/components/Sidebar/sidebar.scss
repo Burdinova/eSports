@@ -54,3 +54,9 @@
 font-family: roboto-r;
 font-size: clamp(12px, 2vw, 18px);
 }
+
+.support__form {
+display: flex;
+flex-direction: column;
+gap: 2vh;
+}

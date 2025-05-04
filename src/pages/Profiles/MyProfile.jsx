@@ -10,6 +10,7 @@ import ModalButton from "../../components/Button/ModalButton";
 import GamesMain from "../../components/Games/GamesMain";
 import SubmitButton from "../../components/Button/SubmitButton";
 import GameAccount from "../../components/Games/GameAccount";
+import UserInfo from "../../components/User/UserInfo";
 
 // import SubmitButton from "../../components/Button/SubmitButton";
 
@@ -159,7 +160,7 @@ export default function MyProfile() {
         </label>
       </div>
 
-      <div className="profile__info">
+      {/* <div className="profile__info">
         <TitleH2 title={user.name} />
 
         <div className="profile__status">
@@ -172,7 +173,9 @@ export default function MyProfile() {
           {user.isOnline ? "В сети" : "Не в сети"} • Дата регистрации{" "}
           {user.registeredDays}
         </div>
-      </div>
+      </div> */}
+
+      <UserInfo user={user} avatar={avatar} />
 
       <div className="profile__windows">
         <div className="profile__window profile__window--left">

@@ -6,6 +6,12 @@
   column-gap: 20px;
   row-gap: 30px;
   margin-bottom: clamp(80px, 9vw, 110px);
+
+  &.profile-view {
+    .tournament {
+      width: calc((100% - 20px * 2) / 3);
+    }
+  }
 }
 
 .tournament {

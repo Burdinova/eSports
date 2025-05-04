@@ -50,9 +50,9 @@ export default function Commands() {
 
       <div className="tab-content">
         {activeTab === "commands" ? (
-          <RoundCards users={commands} isRequest={false} />
+          <RoundCards users={commands} isRequest={false} isTeam={true}/>
         ) : (
-          <RoundCards users={requests_commands} isRequest={true} />
+          <RoundCards users={requests_commands} isRequest={true} isTeam={true}/>
         )}
       </div>
     </div>

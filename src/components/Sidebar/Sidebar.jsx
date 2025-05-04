@@ -12,12 +12,15 @@ import Modal from "../Modal/Modal";
 import TitleH2 from "../TitleH2/TitleH2";
 import GamesMain from "../Games/GamesMain";
 import TextInput from "../InputFields/TextInput";
+import TextareaField from "../InputFields/TextareaField";
 import SubmitButton from "../Button/SubmitButton";
 
 export default function Sidebar() {
   const [isTournamentModalOpen, setIsTournamentModalOpen] = useState(false);
   const [selectedGame, setSelectedGame] = useState(null);
   const [tournamentName, setTournamentName] = useState("");
+  const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
+  const [supportMessage, setSupportMessage] = useState("");
   const navigate = useNavigate();
 
   const handleCloseModal = () => {
@@ -36,15 +39,7 @@ export default function Sidebar() {
     console.log("Игра:", selectedGame);
     console.log("Название турнира:", tournamentName);
 
-    // const tournamentData = {
-    //   game: selectedGame,
-    //   tournamentName: tournamentName,
-    // };
-
-    // localStorage.setItem("tournamentData", JSON.stringify(tournamentData));
-
     handleCloseModal(); // Закрываем модалку
-    // navigate("/newtournament");
 
     navigate("/newtournament", {
       state: {
@@ -52,7 +47,6 @@ export default function Sidebar() {
         tournamentName: tournamentName,
       },
     });
-
   };
 
   return (
@@ -80,7 +74,7 @@ export default function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link to="/commands" className="sidebar__link">
+              <Link to="/teams" className="sidebar__link">
                 <TeamsIcon className="sidebar__icon" aria-label="Команды" />
               </Link>
             </li>
@@ -101,9 +95,15 @@ export default function Sidebar() {
         </div>
 
         <div className="sidebar__bottom">
-          <Link to="/" className="sidebar__link">
+          {/* <Link to="/" className="sidebar__link"> */}
+
+          <button
+            className="sidebar__link"
+            onClick={() => setIsSupportModalOpen(true)}
+          >
             <HeadsetIcon className="sidebar__icon" aria-label="Поддержка" />
-          </Link>
+            {/* </Link> */}
+          </button>
         </div>
       </nav>
 
@@ -127,6 +127,36 @@ export default function Sidebar() {
             <SubmitButton text="Создать турнир" />
           </form>
         )}
+      </Modal>
+
+      <Modal
+        isOpen={isSupportModalOpen}
+        onClose={() => setIsSupportModalOpen(false)}
+      >
+        <TitleH2 title="Поддержка" />
+        <form
+          className="support__form"
+          onSubmit={(e) => {
+            if (!supportMessage) {
+              alert("Заявка отклонена. Ваш запрос пустой");
+              return;
+            }
+            e.preventDefault();
+            // Здесь можно добавить отправку формы на сервер
+            console.log("Сообщение в поддержку отправлено:", supportMessage);
+            setIsSupportModalOpen(false);
+            setSupportMessage("");
+          }}
+        >
+          <TextareaField
+            id="supportMessage"
+            label="Ваш вопрос:"
+            placeholder="Опишите проблему"
+            value={supportMessage}
+            onChange={(e) => setSupportMessage(e.target.value)}
+          />
+          <SubmitButton text="Отправить" />
+        </form>
       </Modal>
     </>
   );

@@ -1,12 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import "./roundCard.scss";
 
-export default function RoundCard({ id, avatar, name, isRequest }) {
+export default function RoundCard({ id, avatar, name, isRequest, isTeam = false }) {
 
   const navigate = useNavigate();
 
+  // const handleClick = () => {
+  //   navigate(`/profile/${id}`);
+  // };
+
   const handleClick = () => {
-    navigate(`/profile/${id}`);
+    if (isTeam) {
+      navigate(`/team/${id}`);
+    } else {
+      navigate(`/profile/${id}`);
+    }
   };
 
   return (

@@ -3,7 +3,9 @@
     display: flex;
     gap: 3%;
     align-items: end;
-    padding-top: clamp(60px, 9vw, 110px);
+    padding-top: clamp(30px, 8vw, 80px);
+    // margin-top: clamp(30px, 8vw, 80px);
+    // padding-top: clamp(60px, 9vw, 110px);
     padding-bottom: clamp(20px, 8vw, 35px);
     position: relative;
     overflow: hidden;

@@ -7,6 +7,10 @@
   color: #fff;
   font-family: roboto-r;
 
+  &__header {
+    margin-bottom: clamp(20px, 8vw, 35px);
+  }
+
   &__avatar {
     position: relative;
     width: 150px;
@@ -42,27 +46,27 @@
     }
   }
 
-  &__info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: clamp(20px, 8vw, 35px);
-  }
+  // &__info {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   gap: 8px;
+  //   margin-bottom: clamp(20px, 8vw, 35px);
+  // }
 
-  &__status {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 14px;
-    justify-content: center;
+  // &__status {
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 0.5rem;
+  //   font-size: 14px;
+  //   justify-content: center;
 
-    &-indicator {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-  }
+  //   &-indicator {
+  //     width: 10px;
+  //     height: 10px;
+  //     border-radius: 50%;
+  //   }
+  // }
 
   &__windows {
     display: grid;
@@ -78,7 +82,7 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-
+    font-family: roboto-r;
     gap: 1rem;
 
     &-title {

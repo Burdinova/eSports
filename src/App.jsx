@@ -5,11 +5,13 @@ import Header from "./components/Header/Header.jsx";
 import Home from "./pages/Home/Home";
 import Games from "./pages/Games/Games";
 import Friends from "./pages/Friends/Friends.jsx";
-import Commands from "./pages/Commands/Commands.jsx";
+import Commands from "./pages/Teams/Teams.jsx";
 import HeaderLogIn from "./components/Header/HeaderLogIn.jsx";
 import AboutGame from "./pages/Games/AboutGame.jsx";
 import Tournaments from "./pages/UserTournaments/UserTournaments.jsx";
 import NewTournament from "./pages/NewTournament/NewTournament.jsx";
+import TeamPage from "./pages/Teams/TeamPage.jsx";
+// import Notifications from "./pages/Notifications/Notifications.jsx";
 
 import Profile from "./pages/Profiles/Profile.jsx"
 import MyProfile from "./pages/Profiles/MyProfile.jsx"; // Твой личный проф
@@ -41,7 +43,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/games" element={<Games />} />
           <Route path="/friends" element={<Friends />} />
-          <Route path="/commands" element={<Commands />} />
+          <Route path="/teams" element={<Commands />} />
           <Route path="/games/:id" element={<AboutGame />} />{" "}
           {/* Теперь принимаем id игры */}
           <Route path="/tournaments" element={<Tournaments />} />
@@ -53,6 +55,8 @@ function App() {
         {/* Профиль другого пользователя по id */}
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/newtournament" element={<NewTournament />} />
+        <Route path="/team/:id" element={<TeamPage />} />
+        {/* <Route path="/notifications" element={<Notifications />} /> */}
         </Routes>
       </div>
     </div>

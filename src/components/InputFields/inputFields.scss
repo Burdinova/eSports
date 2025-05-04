@@ -1,25 +1,32 @@
 @import url("../../fonts.scss");
 
 .field-wrapper {
-// font-family: roboto-r;
+  // font-family: roboto-r;
+  display: flex;
+  flex-direction: column;
+  font-family: roboto-r;
+  gap: 1%;
+  .radio-option {
     display: flex;
-    flex-direction: column;
-    font-family: roboto-r;
+    gap: 0.5rem;
+    // border: 1px solid red;
   }
-  .field-label {
-    font-size: clamp(12px, 2vw, 16px);
-    margin-bottom: 1%;
-  }
-  .text-input,
-  .textarea-input {
-    padding: 8px;
-    border-radius: 6px;
-    border: none;
-    font-size: 14px;
-    
-  }
-  .textarea-input {
-    resize: vertical;
-    min-height: 80px;
-  }
-  
+}
+.field-label {
+  font-size: clamp(12px, 2vw, 16px);
+  margin-bottom: 0.5%;
+
+  // margin-right: 10px;
+}
+.text-input,
+.textarea-input {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  font-family: roboto-r;
+}
+.textarea-input {
+  resize: vertical;
+  min-height: 80px;
+}

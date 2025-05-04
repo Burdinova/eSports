@@ -116,9 +116,9 @@ export default function Friends() {
 
       <div className="friends__tab-content">
         {activeTab === "friends" ? (
-          <RoundCards users={friends} isRequest={false} />
+          <RoundCards users={friends} isRequest={false} isTeam={false}/>
         ) : (
-          <RoundCards users={requests} isRequest={true} />
+          <RoundCards users={requests} isRequest={true} isTeam={false}/>
         )}
       </div>
     </div>
