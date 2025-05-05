@@ -3,7 +3,12 @@ import "./friends.scss";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { friends, requests, allusers } from "../../helpers/friend.js";
+import {
+  friends,
+  requests,
+  allusers,
+  friendRequests,
+} from "../../helpers/friend.js";
 
 import TitleH2 from "../../components/TitleH2/TitleH2.jsx";
 import TabSwich from "../../components/TabSwitch/TabSwith.jsx";
@@ -43,6 +48,7 @@ export default function Friends() {
   const tabs = [
     { id: "friends", label: "Ваши друзья" },
     { id: "requests", label: "Заявки в друзья" },
+    { id: "submitted", label: "Отправленные заявки" },
   ];
 
   console.log(disabledUsers);
@@ -77,14 +83,20 @@ export default function Friends() {
                   {/* Отображение аватара, ника и кнопки */}
                   <div className="friends__user-row">
                     <div className="friends__user-left">
-                      <Link to={`/profile/${user.id}`} className="friends__link">
+                      <Link
+                        to={`/profile/${user.id}`}
+                        className="friends__link"
+                      >
                         <img
                           src={user.avatar}
                           alt="avatar"
                           className="friends__avatar"
                         />
                       </Link>
-                      <Link to={`/profile/${user.id}`} className="friends__link">
+                      <Link
+                        to={`/profile/${user.id}`}
+                        className="friends__link"
+                      >
                         <span className="friends__nickname" title={user.name}>
                           {user.name}
                         </span>
@@ -114,11 +126,22 @@ export default function Friends() {
 
       <TabSwich tabs={tabs} activeTab={activeTab} onTabClick={setActiveTab} />
 
-      <div className="friends__tab-content">
-        {activeTab === "friends" ? (
+      <div className="tab-content">
+        {/* {activeTab === "friends" ? (
           <RoundCards users={friends} isRequest={false} isTeam={false}/>
         ) : (
           <RoundCards users={requests} isRequest={true} isTeam={false}/>
+        )} */}
+        {activeTab === "friends" && (
+          <RoundCards users={friends} isRequest={false} isTeam={false} />
+        )}
+
+        {activeTab === "requests" && (
+          <RoundCards users={requests} isRequest={true} isTeam={false} />
+        )}
+
+        {activeTab === "submitted" && (
+          <RoundCards users={friendRequests} isRequest={false} isTeam={false} />
         )}
       </div>
     </div>

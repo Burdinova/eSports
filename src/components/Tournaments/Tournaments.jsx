@@ -7,7 +7,7 @@ export default function Tournaments({array,  modifier = ""}) {
     <div>
       <ul className={`tournaments ${modifier}`}>
         {array.map((game) => {
-          return <Tournament key={game.id} img={game.img} title={game.title} date={game.date} inf={game.inf}/>;
+          return <Tournament key={game.id} id={game.id} img={game.img} title={game.title} date={game.date} inf={game.inf}/>;
         })}
       </ul>
     </div>

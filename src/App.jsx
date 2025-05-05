@@ -8,9 +8,10 @@ import Friends from "./pages/Friends/Friends.jsx";
 import Commands from "./pages/Teams/Teams.jsx";
 import HeaderLogIn from "./components/Header/HeaderLogIn.jsx";
 import AboutGame from "./pages/Games/AboutGame.jsx";
-import Tournaments from "./pages/UserTournaments/UserTournaments.jsx";
-import NewTournament from "./pages/NewTournament/NewTournament.jsx";
+import Tournaments from "./pages/Tournaments/UserTournaments.jsx";
+import NewTournament from "./pages/Tournaments/NewTournament.jsx";
 import TeamPage from "./pages/Teams/TeamPage.jsx";
+import TournamentPage from "./pages/Tournaments/TournamentPage.jsx";
 // import Notifications from "./pages/Notifications/Notifications.jsx";
 
 import Profile from "./pages/Profiles/Profile.jsx"
@@ -56,6 +57,7 @@ function App() {
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/newtournament" element={<NewTournament />} />
         <Route path="/team/:id" element={<TeamPage />} />
+        <Route path="/tournament/:id" element={<TournamentPage />} />
         {/* <Route path="/notifications" element={<Notifications />} /> */}
         </Routes>
       </div>

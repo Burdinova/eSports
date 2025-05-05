@@ -18,7 +18,7 @@ export default function AboutGame() {
     // { id: "rating", label: "Рейтинг" },
   ];
 
-  const [tournamentFilter, setTournamentFilter] = useState("upcoming");
+  const [tournamentFilter, setTournamentFilter] = useState("open");
 
   const filteredTournaments = allTournaments.filter(
     (t) => t.status === tournamentFilter
@@ -52,9 +52,9 @@ export default function AboutGame() {
               value={tournamentFilter}
               onChange={(e) => setTournamentFilter(e.target.value)}
             >
-              <option value="upcoming">Предстоящие</option>
-              <option value="current">Текущие</option>
-              <option value="finished">Завершённые</option>
+              <option value="open">Предстоящие</option>
+              <option value="ongoing">Текущие</option>
+              <option value="completed">Завершённые</option>
             </select>
           </div>
 

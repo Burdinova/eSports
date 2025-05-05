@@ -11,7 +11,7 @@ export default function UserTournaments() {
   const navigate = useNavigate();
 
   // Начальные значения — пока просто дефолтные
-  const [tournamentFilter, setTournamentFilter] = useState("upcoming");
+  const [tournamentFilter, setTournamentFilter] = useState("open");
   const [organizerFilter, setOrganizerFilter] = useState("manager");
 
   // При заходе на страницу — читаем параметры из URL
@@ -41,7 +41,7 @@ export default function UserTournaments() {
       id: 1,
       img: game1,
       title: "Турнир 1 уч",
-      status: "upcoming",
+      status: "open",
       date: "12.12.2003 | 17:00",
       inf: "5v5 | 32 места | 1.000.000₽ ",
     },
@@ -49,7 +49,7 @@ export default function UserTournaments() {
       id: 7,
       img: game1,
       title: "Турнир 1 уч",
-      status: "upcoming",
+      status: "open",
       date: "12.12.2003 | 17:00",
       inf: "5v5 | 32 места | 1.000.000₽ ",
     },
@@ -57,7 +57,7 @@ export default function UserTournaments() {
       id: 72,
       img: game1,
       title: "Турнир 1 уч",
-      status: "upcoming",
+      status: "open",
       date: "12.12.2003 | 17:00",
       inf: "5v5 | 32 места | 1.000.000₽ ",
     },
@@ -65,7 +65,7 @@ export default function UserTournaments() {
       id: 71,
       img: game1,
       title: "Турнир 1 уч",
-      status: "upcoming",
+      status: "open",
       date: "12.12.2003 | 17:00",
       inf: "5v5 | 32 места | 1.000.000₽ ",
     },
@@ -73,7 +73,7 @@ export default function UserTournaments() {
       id: 11,
       img: game1,
       title: "Турнир 1 уч",
-      status: "upcoming",
+      status: "cancelled",
       date: "12.12.2003 | 17:00",
       inf: "5v5 | 32 места | 1.000.000₽ ",
     },
@@ -81,7 +81,7 @@ export default function UserTournaments() {
       id: 2,
       img: game1,
       title: "Турнир 2 уч",
-      status: "current",
+      status: "ongoing",
       date: "12.12.2003 | 17:00",
       inf: "5v5 | 32 места | 1.000.000₽ ",
     },
@@ -89,7 +89,7 @@ export default function UserTournaments() {
       id: 3,
       img: game1,
       title: "Турнир 3 уч",
-      status: "finished",
+      status: "completed",
       date: "12.12.2003 | 17:00",
       inf: "5v5 | 32 места | 1.000.000₽ ",
     },
@@ -100,7 +100,7 @@ export default function UserTournaments() {
       id: 1,
       img: game1,
       title: "Турнир 1 орг",
-      status: "upcoming",
+      status: "open",
       date: "12.12.2003 | 17:00",
       inf: "5v5 | 32 места | 1.000.000₽ ",
     },
@@ -108,7 +108,7 @@ export default function UserTournaments() {
       id: 2,
       img: game1,
       title: "Турнир 2 орг",
-      status: "current",
+      status: "ongoing",
       date: "12.12.2003 | 17:00",
       inf: "5v5 | 32 места | 1.000.000₽ ",
     },
@@ -116,7 +116,7 @@ export default function UserTournaments() {
       id: 3,
       img: game1,
       title: "Турнир 3 орг",
-      status: "finished",
+      status: "completed",
       date: "12.12.2003 | 17:00",
       inf: "5v5 | 32 места | 1.000.000₽ ",
     },
@@ -138,9 +138,10 @@ export default function UserTournaments() {
             value={tournamentFilter}
             onChange={(e) => setTournamentFilter(e.target.value)}
           >
-            <option value="upcoming">Предстоящие</option>
-            <option value="current">Текущие</option>
-            <option value="finished">Завершённые</option>
+            <option value="open">Предстоящие</option>
+            <option value="ongoing">Текущие</option>
+            <option value="completed">Завершённые</option>
+            <option value="cancelled">Отмененные</option>
           </select>
         </div>
         <div className="user-tournaments__filter">

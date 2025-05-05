@@ -31,6 +31,11 @@ const games = [
     title: "Dota 2",
     img: game1,
   },
+  {
+    id: 6,
+    title: "Dota 2",
+    img: game1,
+  },
 ];
 
 export { games };

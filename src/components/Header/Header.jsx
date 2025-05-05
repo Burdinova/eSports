@@ -52,7 +52,7 @@ export default function Header() {
             <Link to="/friends" className="dropdown__item">
               Друзья
             </Link>
-            <Link to="/commands" className="dropdown__item">
+            <Link to="/teams" className="dropdown__item">
               Команды
             </Link>
             <div className="dropdown__divider" />

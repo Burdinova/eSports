@@ -8,6 +8,7 @@ import TextInput from "../../components/InputFields/TextInput";
 import SubmitButton from "../../components/Button/SubmitButton";
 import RadioGroup from "../../components/InputFields/RadioGroup";
 import AvatarUploader from "../../components/CreateTeamForm/AvatarUploader";
+import TextareaField from "../../components/InputFields/TextareaField";
 
 export default function NewTournamentPage() {
   const location = useLocation();
@@ -24,6 +25,7 @@ export default function NewTournamentPage() {
   const [matchFormat, setMatchFormat] = useState("bo1");
   const [finalFormat, setFinalFormat] = useState("bo1");
   const [imageFile, setImageFile] = useState(null);
+const [description, setDescription] = useState("");
   // const [imageError, setImageError] = useState(false);
   // const [image, setImage] = useState(null);
   // const [imageError, setImageError] = useState(false);
@@ -51,6 +53,7 @@ export default function NewTournamentPage() {
     // setImageError(false);
     console.log("Форма отправлена!", imageFile);
     console.log("Ура!");
+    navigate("/tournaments?tournament=open&organizer=manager");
   };
 
   return (
@@ -65,7 +68,7 @@ export default function NewTournamentPage() {
         <AvatarUploader
           onChange={(file) => {
             setImageFile(file);
-            setImageError(false);
+            // setImageError(false);
           }}
         />
         {/* {imageError && <p className="error-text">Загрузите изображение</p>} */}
@@ -106,6 +109,14 @@ export default function NewTournamentPage() {
           onChange={(e) => setPrizePool(e.target.value)}
           placeholder="Введите сумму"
         />
+      <TextareaField
+        id="tournament-description"
+        label="Описание турнира:"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Введите описание"
+      />
+
         <div className="newtournament__checkbox">
           <input
             type="checkbox"
