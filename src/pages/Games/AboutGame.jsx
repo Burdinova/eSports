@@ -15,7 +15,6 @@ export default function AboutGame() {
   const tabs = [
     { id: "review", label: "Обзор" },
     { id: "tournament", label: "Турниры" },
-    // { id: "rating", label: "Рейтинг" },
   ];
 
   const [tournamentFilter, setTournamentFilter] = useState("open");

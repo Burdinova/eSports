@@ -1,5 +1,8 @@
-.newtournament, .tournament-page {
+.newtournament {
   margin-top: clamp(30px, 8vw, 80px);
+}
+.newtournament,
+.tournament-page {
   margin-bottom: clamp(30px, 8vw, 80px);
   font-family: roboto-r;
 
@@ -11,9 +14,6 @@
 
     .avatar-uploader {
       width: calc((100% - 20px * 3) / 4);
-      // width: 15%;
-      // height: 10px;
-      // height: clamp(120px, 11vw, 200px);
       aspect-ratio: 1.6;
       min-width: 80px;
       border-radius: 10px;
@@ -22,8 +22,6 @@
     &-left {
       display: flex;
       flex-direction: column;
-      // font-family: roboto-r;
-      // gap: 1px;
     }
   }
 

@@ -1,0 +1,101 @@
+.match-card {
+  border-radius: 8px;
+  border: 1px solid #2f2d2d;
+  padding: 10px;
+  width: calc((100% - 10px * 3) / 4); // 4 cards per row with 10px gaps
+  max-width: 290px; // Maintain original max-width
+
+  @media (max-width: 1024px) {
+    width: calc((100% - 10px * 2) / 3); // 3 cards per row
+  }
+
+  @media (max-width: 768px) {
+    width: calc((100% - 10px * 1) / 2); // 2 cards per row
+  }
+
+  @media (max-width: 500px) {
+    width: 100%; // 1 card per row
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    &-left {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+
+  &__status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: white;
+
+    &.status--upcoming {
+      background-color: #2ea149; // Синий для предстоящих
+    }
+
+    &.status--ongoing {
+      background-color: #ffc107; // Жёлтый для текущих
+      color: #212529;
+    }
+
+    &.status--completed {
+      background-color: #6c757d; // Серый для завершённых
+    }
+
+    &.status--unknown {
+      background-color: #dc3545; // Красный для неизвестных
+    }
+  }
+
+  &__format {
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background-color: #2f2d2d;
+  }
+
+  &__teams {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__team {
+    background-color: #2f2d2d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+
+  &__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__name {
+    color: white;
+    font-size: 14px;
+    flex: 1;
+    margin-left: 10px;
+  }
+
+  &__score {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    width: 30px;
+    text-align: right;
+  }
+}

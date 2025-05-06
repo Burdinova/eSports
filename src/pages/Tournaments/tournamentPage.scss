@@ -1,14 +1,51 @@
 .tournament-page {
+  &__header {
+    display: flex;
+    gap: 3%;
+    align-items: end;
+    padding-top: clamp(30px, 8vw, 80px);
+    padding-bottom: clamp(20px, 8vw, 35px);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+        url("../../images/bg_home_intro.png");
+
+      mask-image: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.9) 20%,
+          rgba(0, 0, 0, 0.9) 80%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        linear-gradient(
+          to left,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.9) 20%,
+          rgba(0, 0, 0, 0.9) 80%,
+          rgba(0, 0, 0, 0) 100%
+        );
+      mask-composite: intersect;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+  }
+
   &__status {
-    //   display: inline-block;
-    //   margin-top: 8px;
     padding: 4px 10px;
     border-radius: 20px;
     font-size: 14px;
-    //   font-weight: 500;
     color: white;
     width: fit-content;
-    //   user-select: none;
 
     &.status--open {
       background-color: #2ea149; // зелёный
@@ -87,5 +124,129 @@
 
   &__not-completed {
     color: #aaa;
+  }
+
+  .stage-filter {
+    display: flex;
+    gap: 1%;
+    margin-bottom: 20px;
+
+    &__button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      font-size: 14px;
+      color: white;
+      background-color: #2f2d2d;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+      &--active {
+        background-color: #ff4e53;
+        color: white;
+      }
+    }
+  }
+
+  .tournament-stage {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    &__title {
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    &__matches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+
+  &__overview {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    &-description {
+      font-size: 16px;
+    }
+
+    &-highlights {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    &-card {
+      flex: 1;
+      min-width: 250px;
+      background-color: #2f2d2d;
+      border-radius: 8px;
+      padding: 15px;
+
+      &:hover {
+        background-color: #343232;
+      }
+    }
+
+    &-card-title {
+      margin-bottom: 0.8rem;
+    }
+
+    &-prize {
+      font-size: 20px;
+      font-family: roboto-b;
+      color: #ff4e53;
+    }
+
+    &-organizer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    &-organizer-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    &-organizer-name {
+      color: white;
+    }
+
+    &-contact-link {
+      color: #ff4e53;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      &-highlights {
+        flex-direction: column;
+      }
+
+      &-card {
+        min-width: 100%;
+      }
+    }
   }
 }
