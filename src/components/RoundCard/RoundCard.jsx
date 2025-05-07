@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./roundCard.scss";
 
-export default function RoundCard({ id, avatar, name, isRequest, isTeam = false }) {
+export default function RoundCard({ id, avatar, name, isRequest, isTeam = false,  onSelect, selectedTeamId }) {
 
   const navigate = useNavigate();
 
@@ -10,15 +10,19 @@ export default function RoundCard({ id, avatar, name, isRequest, isTeam = false 
   // };
 
   const handleClick = () => {
-    if (isTeam) {
-      navigate(`/team/${id}`);
+    if (onSelect) {
+      onSelect({ id, name, avatar });
     } else {
-      navigate(`/profile/${id}`);
+      if (isTeam) {
+        navigate(`/team/${id}`);
+      } else {
+        navigate(`/profile/${id}`);
+      }
     }
   };
 
   return (
-    <div className="round-card" onClick={handleClick}>
+    <div className={`round-card ${selectedTeamId === id ? "selected" : ""}`} onClick={handleClick}>
       <img src={avatar} alt={`${name} avatar`} className="round-card__avatar" />
       <div className="round-card__name">{name}</div>
 

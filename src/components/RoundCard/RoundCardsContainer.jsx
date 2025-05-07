@@ -1,9 +1,9 @@
 import RoundCard from "./RoundCard";
 import "./roundCardContainer.scss";
 
-export default function RoundCardsContainer({ users, isRequest, isTeam = false }) {
+export default function RoundCardsContainer({ users, isRequest, isTeam = false, onSelect, selectedTeamId, style="" }) {
   return (
-    <div className="round-card-container">
+    <div className={`round-card-container ${style}`}>
       {users.map((f) => (
         <RoundCard
           key={f.id}
@@ -12,6 +12,8 @@ export default function RoundCardsContainer({ users, isRequest, isTeam = false }
           name={f.name}
           isRequest={isRequest}
           isTeam={isTeam}
+          onSelect={onSelect}
+          selectedTeamId={selectedTeamId}
         />
       ))}
     </div>

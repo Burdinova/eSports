@@ -38,6 +38,17 @@
       background-repeat: no-repeat;
       z-index: -1;
     }
+
+    &-left {
+      flex: 1;
+    }
+
+    &-right {
+      display: flex;
+      align-items: flex-end;
+      // margin-bottom: 10px;
+    }
+
   }
 
   &__status {
@@ -173,6 +184,36 @@
     }
   }
 
+  .tournament-bracket {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+  }
+
+  .bracket-column {
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+    gap: 1rem;
+
+    &__title {
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    &__matches {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+  }
+
+
   &__overview {
     display: flex;
     flex-direction: column;
@@ -249,4 +290,6 @@
       }
     }
   }
+
+
 }

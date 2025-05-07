@@ -23,7 +23,7 @@
     // padding-bottom: 10px;
     font-size: clamp(12px, 1.2vw, 16px);
   }
-    &__submit.sent {
+    &__submit.sent, &__submit:disabled {
       background-color: gray;
       color: white;
       cursor: not-allowed;

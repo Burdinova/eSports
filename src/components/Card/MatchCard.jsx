@@ -1,6 +1,6 @@
 import "./matchCard.scss";
 
-export default function MatchCard({ match }) {
+export default function MatchCard({ match, className }) {
   const getMatchStatus = (status) => {
     switch (status) {
       case "upcoming":
@@ -15,7 +15,7 @@ export default function MatchCard({ match }) {
   };
 
   return (
-    <div className="match-card">
+    <div className={`match-card ${className || ""}`}>
       <div className="match-card__header">
         <div className="match-card__header-left">
           <span

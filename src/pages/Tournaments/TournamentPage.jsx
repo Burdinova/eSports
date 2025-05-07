@@ -7,9 +7,12 @@ import TabSwich from "../../components/TabSwitch/TabSwith.jsx";
 import TitleH2 from "../../components/TitleH2/TitleH2.jsx";
 import RoundCards from "../../components/RoundCard/RoundCardsContainer.jsx";
 import MatchCard from "../../components/Card/MatchCard.jsx";
+import SubmitButton from "../../components/Button/SubmitButton.jsx";
+import Modal from "../../components/Modal/Modal.jsx";
 
 import game1 from "../../images/game2.jpg";
 import { tournaments } from "../../helpers/tournamentsList.js";
+import { commands } from "../../helpers/commands.js";
 
 const tournament = {
   id: 1,
@@ -18,11 +21,12 @@ const tournament = {
   date: "12.12.2003 | 17:00",
   inf: "5v5 | 32 места | 1.000.000₽ ",
   prize_fund: 100000,
+  team: true, //true/false
   description:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, odit.",
   manager: { id: 0, avatar: "/src/images/game1.jpg", name: "gg" },
   contact: "@iburdik",
-  status: "completed", //open, ongoing, completed, cancelled,
+  status: "open", //open, ongoing, completed, cancelled,
   has_groupstage: true,
   group_stage: {
     id: 123,
@@ -197,11 +201,12 @@ const tournament = {
           {
             id: 1,
             number: 1,
+            bracket: "W",
             format: "bo1",
             status: "upcoming", //upcoming, ongoing, completed - предстоящий, текущий, завершенный
             participant1: {
               id: 120,
-              name: "Vasya",
+              name: "Igor",
               avatar: "/src/images/game1.jpg",
             },
             participant2: {
@@ -209,17 +214,18 @@ const tournament = {
               name: "Petya",
               avatar: "/src/images/game1.jpg",
             },
-            score1: 2,
-            score2: 3,
+            score1: 0,
+            score2: 1,
           },
           {
             id: 2,
-            number: 1,
+            number: 2,
+            bracket: "W",
             format: "bo1",
             status: "ongoing",
             participant1: {
               id: 120,
-              name: "Vasya",
+              name: "Jeka",
               avatar: "/src/images/game1.jpg",
             },
             participant2: {
@@ -227,67 +233,89 @@ const tournament = {
               name: "Arseny",
               avatar: "/src/images/game1.jpg",
             },
-            score1: 2,
-            score2: 1,
+            score1: 1,
+            score2: 0,
           },
           {
             id: 3,
             number: 3,
+            bracket: "W",
             format: "bo1",
             status: "completed",
             participant1: {
               id: 120,
-              name: "Vasya",
+              name: "Inna",
               avatar: "/src/images/game1.jpg",
             },
             participant2: {
               id: 121,
-              name: "Arseny",
+              name: "Igor",
               avatar: "/src/images/game1.jpg",
             },
-            score1: 2,
+            score1: 0,
+            score2: 1,
+          },
+          {
+            id: 4,
+            number: 4,
+            bracket: "W",
+            format: "bo1",
+            status: "completed",
+            participant1: {
+              id: 120,
+              name: "Jopich",
+              avatar: "/src/images/game1.jpg",
+            },
+            participant2: {
+              id: 121,
+              name: "Popich",
+              avatar: "/src/images/game1.jpg",
+            },
+            score1: 0,
             score2: 1,
           },
         ],
       },
       {
         id: 125,
-        letter: "B",
+        letter: "2",
         matches: [
           {
             id: 1,
             number: 5,
+            bracket: "W",
             format: "bo1",
             status: "upcoming",
             participant1: {
               id: 120,
-              name: "Inna",
+              name: "Petya",
               avatar: "/src/images/game1.jpg",
             },
             participant2: {
               id: 121,
-              name: "Arseny",
+              name: "Jeka",
               avatar: "/src/images/game1.jpg",
             },
-            score1: 2,
+            score1: 0,
             score2: 1,
           },
           {
             id: 2,
             number: 6,
+            bracket: "W",
             format: "bo1",
             status: "upcoming",
             participant1: {
               id: 120,
-              name: "Inna",
+              name: "Igor",
               avatar: "/src/images/game1.jpg",
             },
             participant2: {
               id: 121,
-              name: "Petya",
+              name: "Popich",
               avatar: "/src/images/game1.jpg",
             },
-            score1: 2,
+            score1: 0,
             score2: 1,
           },
         ],
@@ -297,17 +325,18 @@ const tournament = {
 
   final: {
     id: 2,
-    number: 6,
-    format: "bo1",
+    number: 7,
+    bracket: "W",
+    format: "bo3",
     status: "upcoming",
     participant1: {
       id: 120,
-      name: "Inna",
+      name: "Jeka",
       avatar: "/src/images/game1.jpg",
     },
     participant2: {
       id: 121,
-      name: "Petya",
+      name: "Popich",
       avatar: "/src/images/game1.jpg",
     },
     score1: 2,
@@ -334,6 +363,9 @@ export default function TournamentPage() {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("overview");
   const [activeStage, setActiveStage] = useState("playoff"); // Default to "Плей-офф"
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isApplied, setIsApplied] = useState(false); // Состояние для отслеживания отправки заявки
+  const [selectedTeam, setSelectedTeam] = useState(null);
 
   const tabs = [
     { id: "overview", label: "Обзор" },
@@ -348,19 +380,6 @@ export default function TournamentPage() {
     { id: "playoff", label: "Плей-офф" },
     { id: "final", label: "Финал" },
   ];
-
-  const getMatchStatus = (status) => {
-    switch (status) {
-      case "upcoming":
-        return { text: "Предстоящий", class: "status--upcoming" };
-      case "ongoing":
-        return { text: "Текущий", class: "status--ongoing" };
-      case "completed":
-        return { text: "Завершён", class: "status--completed" };
-      default:
-        return { text: "Неизвестно", class: "status--unknown" };
-    }
-  };
 
   const getTournamentStatus = (status) => {
     switch (status) {
@@ -377,6 +396,44 @@ export default function TournamentPage() {
     }
   };
 
+  const handleApplyClick = () => {
+    if (tournament.status !== "open" || isApplied) return;
+    if (tournament.team) {
+      setIsModalOpen(true);
+    } else {
+      setIsApplied(true);
+      // Здесь будет логика отправки запроса на сервер
+      console.log("Отправка заявки на сервер для индивидуального участия");
+    }
+  };
+
+  const handleTeamSelect = (team) => {
+    setSelectedTeam(team);
+  };
+
+  const handleTeamApply = () => {
+    if (!selectedTeam) {
+      console.log("Ошибка: команда не выбрана");
+      return;
+    }
+
+    console.log("Отправка заявки на сервер для командного участия", {
+      tournamentId: id,
+      teamId: selectedTeam.id,
+      teamName: selectedTeam.name,
+      userId: "currentUserId",
+    });
+
+    setIsApplied(true);
+    setIsModalOpen(false);
+    setSelectedTeam(null); // Сбрасываем выбор
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedTeam(null);
+  };
+
   return (
     <div className="tournament-page">
       <div className="tournament-page__header">
@@ -390,6 +447,15 @@ export default function TournamentPage() {
           <p className={`tournament-page__status status--${tournament.status}`}>
             {getTournamentStatus(tournament.status)}
           </p>
+        </div>
+
+        <div className="tournament-page__header-right">
+          <SubmitButton
+            text={isApplied ? "Заявка отправлена" : "Подать заявку"}
+            onClick={handleApplyClick}
+            disabled={tournament.status !== "open" || isApplied}
+            isSent={isApplied}
+          />
         </div>
       </div>
       <TabSwich tabs={tabs} activeTab={activeTab} onTabClick={setActiveTab} />
@@ -458,6 +524,50 @@ export default function TournamentPage() {
               </div>
             </div>
           </div>
+        )}
+
+        {activeTab === "bracket" && (
+          <>
+            <div className="stage-filter">
+              {stageFilters.map((stage) => (
+                <button
+                  key={stage.id}
+                  className={`stage-filter__button ${
+                    activeStage === stage.id
+                      ? "stage-filter__button--active"
+                      : ""
+                  }`}
+                  onClick={() => setActiveStage(stage.id)}
+                >
+                  {stage.label}
+                </button>
+              ))}
+            </div>
+
+            {activeStage === "playoff" && (
+              <div className="tournament-bracket">
+                {tournament.playoff_stage.rounds.map((round) => (
+                  <div key={round.id} className="bracket-column">
+                    <h3 className="bracket-column__title">
+                      Раунд {round.letter}
+                    </h3>
+                    <div className="bracket-column__matches">
+                      {round.matches.map((match) => (
+                        <MatchCard key={match.id} match={match} 
+                        className="match-card--bracket"/>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+                <div className="bracket-column">
+                  <h3 className="bracket-column__title">Финал</h3>
+                  <div className="bracket-column__matches">
+                    <MatchCard match={tournament.final} className="match-card--bracket"/>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
         )}
 
         {activeTab === "matches" && (
@@ -556,6 +666,40 @@ export default function TournamentPage() {
             </p>
           ))}
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        {/* <div className="modal-content"> */}
+        {/* <h3>Выберите команду для участия</h3> */}
+        <TitleH2 title="Выберите команду" />
+        <div className="modal-content__teams">
+          {/* {commands.length > 0 ? ( */}
+          <RoundCards
+            style="modal"
+            users={commands}
+            isRequest={false}
+            isTeam={true}
+            onSelect={handleTeamSelect}
+            selectedTeamId={selectedTeam?.id}
+          />
+          {/* ) : (
+              <p>
+                У вас нет команд.{" "}
+                <Link to="/commands" onClick={closeModal}>
+                  Создайте команду
+                </Link>{" "}
+                на странице "Команды".
+              </p>
+            )} */}
+        </div>
+
+        <div className="modal-content__actions">
+          <SubmitButton
+            text="Подать заявку"
+            onClick={handleTeamApply}
+            disabled={!selectedTeam}
+          />
+        </div>
+        {/* </div> */}
+      </Modal>
     </div>
   );
 }
