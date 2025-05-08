@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  //   gap: 2rem;
   color: #fff;
   font-family: roboto-r;
 
@@ -46,34 +45,16 @@
     }
   }
 
-  // &__info {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   gap: 8px;
-  //   margin-bottom: clamp(20px, 8vw, 35px);
-  // }
-
-  // &__status {
-  //   display: flex;
-  //   align-items: center;
-  //   gap: 0.5rem;
-  //   font-size: 14px;
-  //   justify-content: center;
-
-  //   &-indicator {
-  //     width: 10px;
-  //     height: 10px;
-  //     border-radius: 50%;
-  //   }
-  // }
-
   &__windows {
     display: grid;
     width: 100%;
     grid-template-columns: 1fr 2fr;
     gap: 2%;
     margin-bottom: clamp(30px, 8vw, 80px);
+
+    @media (max-width: 768px) {
+      grid-template-columns: none;
+    }
   }
 
   &__window {

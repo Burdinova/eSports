@@ -37,7 +37,6 @@ const [description, setDescription] = useState("");
     }
   }, [game, tournamentName, navigate]);
 
-  //   if (!game || !tournamentName) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,11 +57,6 @@ const [description, setDescription] = useState("");
 
   return (
     <div className="newtournament">
-      {/* //   <h1>Создание турнира</h1>
-    //   <p>Игра: {game.title}</p>
-    //   <p>Название турнира: {tournamentName}</p>
-
-    //   <div className="newtournament__header"> */}
       <div className="newtournament__header">
         {/* <div className="field-wrapper"> */}
         <AvatarUploader
@@ -165,7 +159,7 @@ const [description, setDescription] = useState("");
           </div>
         )}
 
-        <RadioGroup
+        {/* <RadioGroup
           label="Этап плей-офф"
           name="playoffStage"
           value={playoffStage}
@@ -182,7 +176,7 @@ const [description, setDescription] = useState("");
               value: "double",
             },
           ]}
-        />
+        /> */}
 
         <RadioGroup
           label="Формат матчей"
@@ -191,6 +185,7 @@ const [description, setDescription] = useState("");
           onChange={setMatchFormat}
           options={[
             { id: "matchFormat-bo1", label: "bo1", value: "bo1" },
+            { id: "matchFormat-bo2", label: "bo2", value: "bo2" },
             { id: "matchFormat-bo3", label: "bo3", value: "bo3" },
           ]}
         />

@@ -5,13 +5,10 @@
     font-size: 14px;
   }
   &__flex {
-    // background-color: #1f1f1f;
     background-color: #383838;
     border-radius: 10px;
     display: flex;
-    //   align-items: center;
     justify-content: space-between;
-    //   gap: 12px;
     padding: 5px 3%;
   }
 
@@ -28,10 +25,6 @@
     object-fit: cover;
   }
 
-  &__nickname {
-    // flex-grow: 1;
-    // font-size: 20px;
-  }
   &__delete {
     background: none;
     border: none;

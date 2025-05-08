@@ -46,7 +46,12 @@
     &-image {
       max-width: 12%;
       border-radius: 8px;
+
+      @media (max-width: 768px) {
+        max-width: 25%;
+      }
     }
+
   }
 
 &__tab{

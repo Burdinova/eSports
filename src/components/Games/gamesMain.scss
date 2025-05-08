@@ -1,11 +1,13 @@
-// @import url("../../fonts.scss");
-
 .games {
   display: flex;
   flex-wrap: wrap;
   column-gap: 20px;
   row-gap: 30px;
-  margin-bottom: clamp(100px, 2vh, 120px);
+  margin-bottom: clamp(70px, 2vh, 120px);
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
 
   &__empty {
     font-family: roboto-r;

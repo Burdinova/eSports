@@ -7,9 +7,18 @@
   row-gap: 30px;
   margin-bottom: clamp(80px, 9vw, 110px);
 
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
+
   &.profile-view {
     .tournament {
       width: calc((100% - 20px * 2) / 3);
+
+      @media (max-width: 768px) {
+        width: calc((100% - 20px * 1) / 2);
+      }
+    
     }
   }
 }
@@ -19,7 +28,6 @@
 
   &__img {
     border-radius: 10px;
-    // max-width: 100%;
     width: 100%;
     height: clamp(120px, 11vw, 200px);
     margin-bottom: 3%;

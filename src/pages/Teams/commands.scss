@@ -4,10 +4,9 @@
   align-items: center;
   margin-top: clamp(30px, 8vw, 80px);
   margin-bottom: clamp(20px, 8vw, 35px);
-  // background: red;
 
   .title-h2 {
-    margin: 0; // перезаписываем только тут
+    margin: 0;
   }
 }
 

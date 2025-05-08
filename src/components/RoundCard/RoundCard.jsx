@@ -5,10 +5,6 @@ export default function RoundCard({ id, avatar, name, isRequest, isTeam = false,
 
   const navigate = useNavigate();
 
-  // const handleClick = () => {
-  //   navigate(`/profile/${id}`);
-  // };
-
   const handleClick = () => {
     if (onSelect) {
       onSelect({ id, name, avatar });

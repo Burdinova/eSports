@@ -65,6 +65,10 @@
   font-size: clamp(12px, 1.2vw, 18px);
   text-align: center;
   font-family: roboto-r;
+
+  @media (max-width: 768px) {
+    padding: 0 10%;
+  }
 }
 .home__highlight {
   color: #ff4e53;

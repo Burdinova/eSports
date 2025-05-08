@@ -24,7 +24,7 @@ const tournament = {
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, odit.",
   manager: { id: 0, avatar: "/src/images/game1.jpg", name: "gg" },
   contact: "@iburdik",
-  status: "open",
+  status: "completed",
   has_groupstage: true,
   group_stage: {
     id: 123,
@@ -88,7 +88,7 @@ const tournament = {
             score2: 1,
           },
         ],
-        group_rous: [
+        group_rows: [
           {
             id: 333,
             place: 1,
@@ -145,6 +145,123 @@ const tournament = {
           },
         ],
       },
+      {
+        id: 124,
+        letter: "A",
+        matches: [
+          {
+            id: 1,
+            number: 1,
+            format: "bo1",
+            status: "upcoming",
+            participant1: {
+              id: 120,
+              name: "Vasya",
+              avatar: "/src/images/game1.jpg",
+            },
+            participant2: {
+              id: 121,
+              name: "Petya",
+              avatar: "/src/images/game1.jpg",
+            },
+            score1: 2,
+            score2: 3,
+          },
+          {
+            id: 2,
+            number: 1,
+            format: "bo1",
+            status: "ongoing",
+            participant1: {
+              id: 120,
+              name: "Vasya",
+              avatar: "/src/images/game1.jpg",
+            },
+            participant2: {
+              id: 121,
+              name: "Arseny",
+              avatar: "/src/images/game1.jpg",
+            },
+            score1: 2,
+            score2: 1,
+          },
+          {
+            id: 3,
+            number: 3,
+            format: "bo1",
+            status: "completed",
+            participant1: {
+              id: 120,
+              name: "Vasya",
+              avatar: "/src/images/game1.jpg",
+            },
+            participant2: {
+              id: 121,
+              name: "Arseny",
+              avatar: "/src/images/game1.jpg",
+            },
+            score1: 2,
+            score2: 1,
+          },
+        ],
+        group_rows: [
+          {
+            id: 333,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            team: { id: 0, avatar: "/src/images/game1.jpg", name: "kom1" },
+            user: null,
+          },
+          {
+            id: 334,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            team: { id: 0, avatar: "/src/images/game1.jpg", name: "kom2" },
+            user: null,
+          },
+          {
+            id: 334,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            team: { id: 0, avatar: "/src/images/game1.jpg", name: "kom2" },
+            user: null,
+          },
+          {
+            id: 334,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            team: { id: 0, avatar: "/src/images/game1.jpg", name: "kom2" },
+            user: null,
+          },
+          {
+            id: 334,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            team: { id: 0, avatar: "/src/images/game1.jpg", name: "kom2" },
+            user: null,
+          },
+          {
+            id: 335,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            team: { id: 0, avatar: "/src/images/game1.jpg", name: "kom3" },
+            user: null,
+          },
+        ],
+      },
+
       {
         id: 125,
         letter: "B",
@@ -240,7 +357,7 @@ const tournament = {
             score2: 1,
           },
         ],
-        group_rous: [
+        group_rows: [
           {
             id: 333,
             place: 1,
@@ -293,7 +410,7 @@ const tournament = {
 
   playoff_stage: {
     id: 123,
-    elimination_type: "double", //double
+
     rounds: [
       {
         letter: "1",
@@ -477,43 +594,42 @@ const resultPlaces = [
   { place: 5, id: 4, avatar: "/src/images/game1.jpg", name: "ww", prize: 0 },
 ];
 
-const getRowClass = (index, totalRows) => {
-  if (totalRows === 0) return "row--red";
 
-  if ( tournament.playoff_stage.elimination_type === "single") {
-    // Calculate number of green rows: (totalRows / 2) + (totalRows % 2)
-    const greenRows = Math.floor(totalRows / 2) + (totalRows % 2);
+const getMaxGroupRows = () => {
+  return Math.max(
+    ...tournament.group_stage.groups.map((group) => group.group_rows.length),
+    1
+  );
+};
 
-    // Determine color based on index
-    if (index < greenRows) return "row--green";
-    return "row--red";
-  }
+const greenRows = (() => {
+  const maxRows = getMaxGroupRows();
+  if (maxRows <= 4) return Math.ceil(maxRows / 2);
+  if (maxRows === 5) return 2;
+  if (maxRows >= 6 && maxRows <= 8) return 4;
+  return maxRows - 2; // For safety, though max is 8 here
+})();
 
-  // Calculate number of green rows
-  let greenRows = totalRows === 2 ? 1 : Math.ceil(totalRows / 3);
-
-  // Calculate number of red rows
-  let redRows;
-  if (totalRows === 2 || totalRows < 6) {
-    redRows = 1;
-  } else {
-    redRows = Math.floor(totalRows / 3);
-  }
-
-  // Calculate number of yellow rows
-  let yellowRows = totalRows - greenRows - redRows;
-
-  // Ensure yellowRows is non-negative
-  if (yellowRows < 0) {
-    yellowRows = 0;
-    redRows = totalRows - greenRows; // Adjust redRows to fill the remaining
-  }
-
-  // Determine the color based on index
+const getRowClass = (index) => {
   if (index < greenRows) return "row--green";
-  if (index < greenRows + yellowRows) return "row--yellow";
   return "row--red";
 };
+
+
+// const getRowClass = (index, totalRows) => {
+//   if (totalRows === 0) return "row--red";
+
+//   let greenRows;
+//   if (totalRows <= 4) {
+//     greenRows = Math.ceil(totalRows / 2); // For 1-4 rows: half (rounded up) are green
+//   } else {
+//     greenRows = 4; // For 5+ rows: 4 rows are green
+//   }
+
+//   // Determine color based on index
+//   if (index < greenRows) return "row--green";
+//   return "row--red";
+// };
 
 export default function TournamentPage() {
   const { id } = useParams();
@@ -756,7 +872,7 @@ export default function TournamentPage() {
                           <span>П</span>
                           <span>Очки</span>
                         </div>
-                        {group.group_rous.map((row, index) => {
+                        {group.group_rows.map((row, index) => {
                           const entity = row.team || row.user;
                           const linkTo = row.team
                             ? `/team/${entity.id}`
@@ -767,7 +883,7 @@ export default function TournamentPage() {
                               key={row.id}
                               className={`standings-row ${getRowClass(
                                 index,
-                                group.group_rous.length
+                                group.group_rows.length
                               )}`}
                             >
                               <span>{row.place}</span>

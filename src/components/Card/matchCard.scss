@@ -2,19 +2,19 @@
   border-radius: 8px;
   border: 1px solid #2f2d2d;
   padding: 10px;
-  width: calc((100% - 10px * 3) / 4); // 4 cards per row with 10px gaps
-  max-width: 290px; // Maintain original max-width
+  width: calc((100% - 10px * 3) / 4);
+  max-width: 290px;
 
   @media (max-width: 1024px) {
-    width: calc((100% - 10px * 2) / 3); // 3 cards per row
+    width: calc((100% - 10px * 2) / 3);
   }
 
   @media (max-width: 768px) {
-    width: calc((100% - 10px * 1) / 2); // 2 cards per row
+    width: calc((100% - 10px * 1) / 2);
   }
 
   @media (max-width: 500px) {
-    width: 100%; // 1 card per row
+    width: 100%;
   }
 
   &__header {
@@ -37,20 +37,20 @@
     color: white;
 
     &.status--upcoming {
-      background-color: #2ea149; // Синий для предстоящих
+      background-color: #2ea149;
     }
 
     &.status--ongoing {
-      background-color: #ffc107; // Жёлтый для текущих
+      background-color: #ffc107;
       color: #212529;
     }
 
     &.status--completed {
-      background-color: #6c757d; // Серый для завершённых
+      background-color: #6c757d;
     }
 
     &.status--unknown {
-      background-color: #dc3545; // Красный для неизвестных
+      background-color: #dc3545;
     }
   }
 
@@ -101,12 +101,11 @@
 
   &.match-card--bracket {
     width: 100%;
-    max-width: 250px; // Фиксированная ширина для колонок в сетке
-    margin: 0 auto; // Центрирование в колонке
+    max-width: 250px;
+    margin: 0 auto;
 
     @media (max-width: 768px) {
-      max-width: 200px; // Уменьшение ширины на мобильных
+      max-width: 200px;
     }
   }
-
 }
