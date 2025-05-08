@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
-// import "/src/pages/Tournaments/tournamentPage.scss";
 import "./tournamentPage.scss";
 
 import TabSwich from "../../components/TabSwitch/TabSwith.jsx";
@@ -11,7 +10,6 @@ import SubmitButton from "../../components/Button/SubmitButton.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
 
 import game1 from "../../images/game2.jpg";
-import { tournaments } from "../../helpers/tournamentsList.js";
 import { commands } from "../../helpers/commands.js";
 
 const tournament = {
@@ -21,12 +19,12 @@ const tournament = {
   date: "12.12.2003 | 17:00",
   inf: "5v5 | 32 места | 1.000.000₽ ",
   prize_fund: 100000,
-  team: true, //true/false
+  team: true,
   description:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, odit.",
   manager: { id: 0, avatar: "/src/images/game1.jpg", name: "gg" },
   contact: "@iburdik",
-  status: "open", //open, ongoing, completed, cancelled,
+  status: "open",
   has_groupstage: true,
   group_stage: {
     id: 123,
@@ -39,7 +37,7 @@ const tournament = {
             id: 1,
             number: 1,
             format: "bo1",
-            status: "upcoming", //upcoming, ongoing, completed - предстоящий, текущий, завершенный
+            status: "upcoming",
             participant1: {
               id: 120,
               name: "Vasya",
@@ -88,6 +86,62 @@ const tournament = {
             },
             score1: 2,
             score2: 1,
+          },
+        ],
+        group_rous: [
+          {
+            id: 333,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            team: { id: 0, avatar: "/src/images/game1.jpg", name: "kom1" },
+            user: null,
+          },
+          {
+            id: 334,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            team: { id: 0, avatar: "/src/images/game1.jpg", name: "kom2" },
+            user: null,
+          },
+          {
+            id: 334,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            team: { id: 0, avatar: "/src/images/game1.jpg", name: "kom2" },
+            user: null,
+          },
+          {
+            id: 334,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            team: { id: 0, avatar: "/src/images/game1.jpg", name: "kom2" },
+            user: null,
+          },
+          {
+            id: 334,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            team: { id: 0, avatar: "/src/images/game1.jpg", name: "kom2" },
+            user: null,
+          },
+          {
+            id: 335,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            team: { id: 0, avatar: "/src/images/game1.jpg", name: "kom3" },
+            user: null,
           },
         ],
       },
@@ -186,24 +240,70 @@ const tournament = {
             score2: 1,
           },
         ],
+        group_rous: [
+          {
+            id: 333,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            user: { id: 0, avatar: "/src/images/game1.jpg", name: "inna" },
+            team: null,
+          },
+          {
+            id: 333,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            user: { id: 0, avatar: "/src/images/game1.jpg", name: "inna" },
+            team: null,
+          },
+          {
+            id: 333,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            user: { id: 0, avatar: "/src/images/game1.jpg", name: "inna" },
+            team: null,
+          },
+          {
+            id: 334,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            user: { id: 0, avatar: "/src/images/game1.jpg", name: "kira" },
+            team: null,
+          },
+          {
+            id: 335,
+            place: 1,
+            wins: 2,
+            draws: 1,
+            loses: 0,
+            user: { id: 0, avatar: "/src/images/game1.jpg", name: "nika" },
+            team: null,
+          },
+        ],
       },
     ],
-    // winner_qual: 2,
-    // loser_qual: 2,
   },
 
   playoff_stage: {
     id: 123,
+    elimination_type: "double", //double
     rounds: [
       {
         letter: "1",
         matches: [
           {
-            id: 1,
+            id: "uuid-1-1",
             number: 1,
             bracket: "W",
             format: "bo1",
-            status: "upcoming", //upcoming, ongoing, completed - предстоящий, текущий, завершенный
+            status: "upcoming",
             participant1: {
               id: 120,
               name: "Igor",
@@ -216,9 +316,12 @@ const tournament = {
             },
             score1: 0,
             score2: 1,
+            depends_on_match_1_id: null,
+            depends_on_match_2_id: null,
+            winner_to_match_id: "uuid-2-1",
           },
           {
-            id: 2,
+            id: "uuid-1-2",
             number: 2,
             bracket: "W",
             format: "bo1",
@@ -235,9 +338,12 @@ const tournament = {
             },
             score1: 1,
             score2: 0,
+            depends_on_match_1_id: null,
+            depends_on_match_2_id: null,
+            winner_to_match_id: "uuid-2-1",
           },
           {
-            id: 3,
+            id: "uuid-1-3",
             number: 3,
             bracket: "W",
             format: "bo1",
@@ -254,9 +360,12 @@ const tournament = {
             },
             score1: 0,
             score2: 1,
+            depends_on_match_1_id: null,
+            depends_on_match_2_id: null,
+            winner_to_match_id: "uuid-2-2",
           },
           {
-            id: 4,
+            id: "uuid-1-4",
             number: 4,
             bracket: "W",
             format: "bo1",
@@ -273,6 +382,9 @@ const tournament = {
             },
             score1: 0,
             score2: 1,
+            depends_on_match_1_id: null,
+            depends_on_match_2_id: null,
+            winner_to_match_id: "uuid-2-2",
           },
         ],
       },
@@ -281,7 +393,7 @@ const tournament = {
         letter: "2",
         matches: [
           {
-            id: 1,
+            id: "uuid-2-1",
             number: 5,
             bracket: "W",
             format: "bo1",
@@ -298,9 +410,12 @@ const tournament = {
             },
             score1: 0,
             score2: 1,
+            depends_on_match_1_id: "uuid-1-1",
+            depends_on_match_2_id: "uuid-1-2",
+            winner_to_match_id: "uuid-final-1",
           },
           {
-            id: 2,
+            id: "uuid-2-2",
             number: 6,
             bracket: "W",
             format: "bo1",
@@ -317,6 +432,9 @@ const tournament = {
             },
             score1: 0,
             score2: 1,
+            depends_on_match_1_id: "uuid-1-3",
+            depends_on_match_2_id: "uuid-1-4",
+            winner_to_match_id: "uuid-final-1",
           },
         ],
       },
@@ -324,7 +442,7 @@ const tournament = {
   },
 
   final: {
-    id: 2,
+    id: "uuid-final-1",
     number: 7,
     bracket: "W",
     format: "bo3",
@@ -359,12 +477,50 @@ const resultPlaces = [
   { place: 5, id: 4, avatar: "/src/images/game1.jpg", name: "ww", prize: 0 },
 ];
 
+const getRowClass = (index, totalRows) => {
+  if (totalRows === 0) return "row--red";
+
+  if ( tournament.playoff_stage.elimination_type === "single") {
+    // Calculate number of green rows: (totalRows / 2) + (totalRows % 2)
+    const greenRows = Math.floor(totalRows / 2) + (totalRows % 2);
+
+    // Determine color based on index
+    if (index < greenRows) return "row--green";
+    return "row--red";
+  }
+
+  // Calculate number of green rows
+  let greenRows = totalRows === 2 ? 1 : Math.ceil(totalRows / 3);
+
+  // Calculate number of red rows
+  let redRows;
+  if (totalRows === 2 || totalRows < 6) {
+    redRows = 1;
+  } else {
+    redRows = Math.floor(totalRows / 3);
+  }
+
+  // Calculate number of yellow rows
+  let yellowRows = totalRows - greenRows - redRows;
+
+  // Ensure yellowRows is non-negative
+  if (yellowRows < 0) {
+    yellowRows = 0;
+    redRows = totalRows - greenRows; // Adjust redRows to fill the remaining
+  }
+
+  // Determine the color based on index
+  if (index < greenRows) return "row--green";
+  if (index < greenRows + yellowRows) return "row--yellow";
+  return "row--red";
+};
+
 export default function TournamentPage() {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState("overview");
-  const [activeStage, setActiveStage] = useState("playoff"); // Default to "Плей-офф"
+  const [activeStage, setActiveStage] = useState("playoff");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isApplied, setIsApplied] = useState(false); // Состояние для отслеживания отправки заявки
+  const [isApplied, setIsApplied] = useState(false);
   const [selectedTeam, setSelectedTeam] = useState(null);
 
   const tabs = [
@@ -402,7 +558,6 @@ export default function TournamentPage() {
       setIsModalOpen(true);
     } else {
       setIsApplied(true);
-      // Здесь будет логика отправки запроса на сервер
       console.log("Отправка заявки на сервер для индивидуального участия");
     }
   };
@@ -426,12 +581,52 @@ export default function TournamentPage() {
 
     setIsApplied(true);
     setIsModalOpen(false);
-    setSelectedTeam(null); // Сбрасываем выбор
+    setSelectedTeam(null);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedTeam(null);
+  };
+
+  // Calculate the maximum number of matches in any round to determine the height of the bracket
+  const maxMatchesInRound = Math.max(
+    ...tournament.playoff_stage.rounds.map((round) => round.matches.length),
+    1 // For the final
+  );
+
+  // Function to render a single round with proper spacing
+  const renderRound = (round) => {
+    const matches = round.matches;
+    return (
+      <div key={round.id} className="bracket-column">
+        <h3 className="bracket-column__title">Раунд {round.letter}</h3>
+        <div className="bracket-column__matches">
+          {matches.map((match) => (
+            <div key={match.id} className="bracket-match-wrapper">
+              <MatchCard match={match} className="match-card--bracket" />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  // Render the final match
+  const renderFinal = () => {
+    return (
+      <div className="bracket-column">
+        <h3 className="bracket-column__title">Финал</h3>
+        <div className="bracket-column__matches">
+          <div className="bracket-match-wrapper">
+            <MatchCard
+              match={tournament.final}
+              className="match-card--bracket"
+            />
+          </div>
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -544,27 +739,66 @@ export default function TournamentPage() {
               ))}
             </div>
 
+            {activeStage === "group" && tournament.has_groupstage && (
+              <div className="tournament-stage">
+                <div className="tournament-stage__groups-container">
+                  {tournament.group_stage.groups.map((group) => (
+                    <div key={group.id} className="tournament-stage__group">
+                      <h3 className="tournament-stage__title">
+                        Группа {group.letter}
+                      </h3>
+                      <div className="tournament-stage__standings">
+                        <div className="standings-header">
+                          <span>Место</span>
+                          <span>Участник</span>
+                          <span>В</span>
+                          <span>Н</span>
+                          <span>П</span>
+                          <span>Очки</span>
+                        </div>
+                        {group.group_rous.map((row, index) => {
+                          const entity = row.team || row.user;
+                          const linkTo = row.team
+                            ? `/team/${entity.id}`
+                            : `/profile/${entity.id}`;
+                            const points = row.wins * 2 + row.draws;
+                          return (
+                            <div
+                              key={row.id}
+                              className={`standings-row ${getRowClass(
+                                index,
+                                group.group_rous.length
+                              )}`}
+                            >
+                              <span>{row.place}</span>
+                              <Link to={linkTo} className="standings-entity">
+                                <img
+                                  src={entity.avatar}
+                                  alt="avatar"
+                                  className="entity-avatar"
+                                />
+                                <span>{entity.name}</span>
+                              </Link>
+                              <span>{row.wins}</span>
+                              <span>{row.draws}</span>
+                              <span>{row.loses}</span>
+                              <span>{points}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {activeStage === "playoff" && (
               <div className="tournament-bracket">
-                {tournament.playoff_stage.rounds.map((round) => (
-                  <div key={round.id} className="bracket-column">
-                    <h3 className="bracket-column__title">
-                      Раунд {round.letter}
-                    </h3>
-                    <div className="bracket-column__matches">
-                      {round.matches.map((match) => (
-                        <MatchCard key={match.id} match={match} 
-                        className="match-card--bracket"/>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-                <div className="bracket-column">
-                  <h3 className="bracket-column__title">Финал</h3>
-                  <div className="bracket-column__matches">
-                    <MatchCard match={tournament.final} className="match-card--bracket"/>
-                  </div>
-                </div>
+                {tournament.playoff_stage.rounds.map((round) =>
+                  renderRound(round)
+                )}
+                {renderFinal()}
               </div>
             )}
           </>
@@ -667,11 +901,8 @@ export default function TournamentPage() {
           ))}
       </div>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        {/* <div className="modal-content"> */}
-        {/* <h3>Выберите команду для участия</h3> */}
         <TitleH2 title="Выберите команду" />
         <div className="modal-content__teams">
-          {/* {commands.length > 0 ? ( */}
           <RoundCards
             style="modal"
             users={commands}
@@ -680,15 +911,6 @@ export default function TournamentPage() {
             onSelect={handleTeamSelect}
             selectedTeamId={selectedTeam?.id}
           />
-          {/* ) : (
-              <p>
-                У вас нет команд.{" "}
-                <Link to="/commands" onClick={closeModal}>
-                  Создайте команду
-                </Link>{" "}
-                на странице "Команды".
-              </p>
-            )} */}
         </div>
 
         <div className="modal-content__actions">
@@ -698,7 +920,6 @@ export default function TournamentPage() {
             disabled={!selectedTeam}
           />
         </div>
-        {/* </div> */}
       </Modal>
     </div>
   );
