@@ -32,9 +32,9 @@ export default function Home() {
       <GamesMain />
       <Card
         reverse={true}
-        text="Создай турнир своей мечты: твой формат, твой призовой фонд, твои участники!"
-        link="/about"
-        linkText="Создать турнир"
+        text="Создай комунду мечты: твой формат, твои правила, твои участники!"
+        link="/teams"
+        linkText="Создать команду"
         image="src/images/sova.png"
       />
       <TitleH2 title="Популярные турниры" style="indent"/>

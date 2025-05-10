@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-// import TitleH2 from "../../components/TitleH2/TitleH2";
 import UserInfo from "../../components/User/UserInfo";
 import SubmitButton from "../../components/Button/SubmitButton";
 import TabSwich from "../../components/TabSwitch/TabSwith";
@@ -23,7 +22,7 @@ const user = {
   avatar: avatar,
   isOnline: true,
   registeredDays: "55.05.2021",
-  friendshipStatus: "no", //no/yes/requested
+  friendshipStatus: "yes", //no/yes/requested
 };
 
 const tabs = [
@@ -37,28 +36,38 @@ export default function Profile() {
 
   const [activeTab, setActiveTab] = useState("information");
 
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const [buttonText, setButtonText] = useState(
-    user.friendshipStatus === "yes"
-      ? "Удалить из друзей"
-      : user.friendshipStatus === "no"
-      ? "Добавить в друзья"
-      : ""
+  const [friendshipStatus, setFriendshipStatus] = useState(
+    user.friendshipStatus
   );
+  const [isRequestSent, setIsRequestSent] = useState(false);
+
+  const getButtonText = () => {
+    if (friendshipStatus === "yes") {
+      return "Удалить из друзей";
+    }
+    return isRequestSent ? "Отменить заявку" : "Отправить заявку";
+  };
 
   const handleFriendAction = () => {
-    setIsButtonDisabled(true);
-    console.log(
-      `Запрос отправлен: ${
-        user.friendshipStatus === "no" ? "добавить" : "удалить"
-      } друга`
-    );
+    if (friendshipStatus === "yes") {
+      // Удаляем из друзей
+      setFriendshipStatus("no");
+      setIsRequestSent(false);
+      console.log("Запрос отправлен: удалить друга");
+    } else if (isRequestSent) {
+      // Отменяем заявку
+      setIsRequestSent(false);
+      console.log("Запрос отправлен: отменить заявку");
+    } else {
+      // Отправляем заявку
+      setIsRequestSent(true);
+      console.log("Запрос отправлен: добавить друга");
+    }
 
     // Здесь можно отправить fetch / axios POST запрос
     // fetch('/api/friend-action', { method: 'POST', body: JSON.stringify({ id: user.id }) })
 
     // Можно также менять текст кнопки после нажатия:
-    setButtonText("Запрос отправлен");
   };
 
   const gameAccounts = [
@@ -96,7 +105,6 @@ export default function Profile() {
   return (
     <div>
       <div className="profile profile__header">
-        {/* <p>ID пользователя: {id}</p> */}
         <div className="profile__avatar">
           <img
             src={user.avatar}
@@ -107,20 +115,12 @@ export default function Profile() {
 
         <UserInfo user={user} avatar={user.avatar} />
 
-        {/* {user.friendshipStatus === "no" && (
-          <SubmitButton text="Добавить в друзья" />
-        )}
-
-        {user.friendshipStatus === "yes" && (
-          <SubmitButton text="Удалить из друзей" />
-        )} */}
-
         {user.friendshipStatus !== "requested" && (
           <SubmitButton
-            text={buttonText}
+            text={getButtonText()}
             onClick={handleFriendAction}
-            disabled={isButtonDisabled}
-            isSent={isButtonDisabled}
+            // disabled={true}
+            // isSent={isRequestSent && friendshipStatus !== "yes"}
             type="button"
           />
         )}
@@ -150,11 +150,9 @@ export default function Profile() {
             <div className="profile__window profile__window--right">
               <h3 className="profile__window-title">Турниры пользователя</h3>
               {listTournaments.length > 0 ? (
-                <Tournaments array={listTournaments} modifier="profile-view"/>
+                <Tournaments array={listTournaments} modifier="profile-view" />
               ) : (
-                <p className="user-tournaments__empty">
-                  Нет турниров
-                </p>
+                <p className="user-tournaments__empty">Нет турниров</p>
               )}
             </div>
           </div>

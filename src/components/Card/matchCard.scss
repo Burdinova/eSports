@@ -22,7 +22,8 @@
     justify-content: space-between;
     margin-bottom: 10px;
 
-    &-left {
+    &-left,
+    &-right {
       font-size: 12px;
       display: flex;
       align-items: center;
@@ -108,4 +109,73 @@
       max-width: 200px;
     }
   }
+}
+
+.match-details-modal {
+  // margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+}
+.match-details-modal__header {
+  // display: flex;
+  // justify-content: center;
+  // gap: 100px;
+  // align-items: center;
+}
+
+.match-details-modal__teams {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.match-details-modal__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.winner-block {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+
+  &-right {
+    display: flex;
+    align-items: center;
+  }
+
+  &.ongoin-maps {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.winner-block__title {
+  margin-bottom: 8px;
+}
+
+.winner-block__details {
+  display: flex;
+  align-items: center;
+  gap: 2%;
+}
+
+.winner-block__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ongoing-block__participants {
+  display: flex;
+  justify-content: space-around;
 }

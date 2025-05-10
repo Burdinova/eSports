@@ -25,7 +25,7 @@ export default function NewTournamentPage() {
   const [matchFormat, setMatchFormat] = useState("bo1");
   const [finalFormat, setFinalFormat] = useState("bo1");
   const [imageFile, setImageFile] = useState(null);
-const [description, setDescription] = useState("");
+  const [description, setDescription] = useState("");
   // const [imageError, setImageError] = useState(false);
   // const [image, setImage] = useState(null);
   // const [imageError, setImageError] = useState(false);
@@ -36,7 +36,6 @@ const [description, setDescription] = useState("");
       navigate("/", { replace: true });
     }
   }, [game, tournamentName, navigate]);
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -103,13 +102,13 @@ const [description, setDescription] = useState("");
           onChange={(e) => setPrizePool(e.target.value)}
           placeholder="Введите сумму"
         />
-      <TextareaField
-        id="tournament-description"
-        label="Описание турнира:"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Введите описание"
-      />
+        <TextareaField
+          id="tournament-description"
+          label="Описание турнира:"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Введите описание"
+        />
 
         <div className="newtournament__checkbox">
           <input
@@ -124,23 +123,35 @@ const [description, setDescription] = useState("");
         </div>
 
         {!groupStage ? (
-          <div className="newtournament__amount-radio">
-            <label className="field-label">Количество участников</label>
-            <div className="radio-group">
-              {[4, 8, 16, 32].map((value) => (
-                <label key={value} className="radio-option">
-                  <input
-                    type="radio"
-                    name="slots"
-                    value={value}
-                    checked={slots === value}
-                    onChange={() => setSlots(value)}
-                  />
-                  {value}
-                </label>
-              ))}
+          <>
+            <div className="newtournament__amount-radio">
+              <label className="field-label">Количество участников</label>
+              <div className="radio-group">
+                {[4, 8, 16, 32].map((value) => (
+                  <label key={value} className="radio-option">
+                    <input
+                      type="radio"
+                      name="slots"
+                      value={value}
+                      checked={slots === value}
+                      onChange={() => setSlots(value)}
+                    />
+                    {value}
+                  </label>
+                ))}
+              </div>
             </div>
-          </div>
+            <RadioGroup
+              label="Формат матчей"
+              name="matchFormat"
+              value={matchFormat}
+              onChange={setMatchFormat}
+              options={[
+                { id: "matchFormat-bo1", label: "bo1", value: "bo1" },
+                { id: "matchFormat-bo3", label: "bo3", value: "bo3" },
+              ]}
+            />
+          </>
         ) : (
           <div className="field-wrapper">
             <label className="field-label" htmlFor="group-stage-slider">
@@ -156,39 +167,20 @@ const [description, setDescription] = useState("");
               onChange={(e) => setSelectedSlots(Number(e.target.value))}
             />
             <div className="range-value">{selectedSlots}</div>
+
+            <RadioGroup
+              label="Формат матчей"
+              name="matchFormat"
+              value={matchFormat}
+              onChange={setMatchFormat}
+              options={[
+                { id: "matchFormat-bo1", label: "bo1", value: "bo1" },
+                { id: "matchFormat-bo2", label: "bo2", value: "bo2" },
+                { id: "matchFormat-bo3", label: "bo3", value: "bo3" },
+              ]}
+            />
           </div>
         )}
-
-        {/* <RadioGroup
-          label="Этап плей-офф"
-          name="playoffStage"
-          value={playoffStage}
-          onChange={setPlayoffStage}
-          options={[
-            {
-              id: "playoff-single",
-              label: "Одиночное выбывание",
-              value: "single",
-            },
-            {
-              id: "playoff-double",
-              label: "Двойное выбывание",
-              value: "double",
-            },
-          ]}
-        /> */}
-
-        <RadioGroup
-          label="Формат матчей"
-          name="matchFormat"
-          value={matchFormat}
-          onChange={setMatchFormat}
-          options={[
-            { id: "matchFormat-bo1", label: "bo1", value: "bo1" },
-            { id: "matchFormat-bo2", label: "bo2", value: "bo2" },
-            { id: "matchFormat-bo3", label: "bo3", value: "bo3" },
-          ]}
-        />
 
         <RadioGroup
           label="Формат финала"

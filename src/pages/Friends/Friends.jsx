@@ -127,11 +127,7 @@ export default function Friends() {
       <TabSwich tabs={tabs} activeTab={activeTab} onTabClick={setActiveTab} />
 
       <div className="tab-content">
-        {/* {activeTab === "friends" ? (
-          <RoundCards users={friends} isRequest={false} isTeam={false}/>
-        ) : (
-          <RoundCards users={requests} isRequest={true} isTeam={false}/>
-        )} */}
+
         {activeTab === "friends" && (
           <RoundCards users={friends} isRequest={false} isTeam={false} />
         )}
