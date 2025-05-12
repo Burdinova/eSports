@@ -1,12 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import "./header.scss";
 import NotificationsIcon from "../../icons/bell-ring.svg?react";
 import ProfileIcon from "../../icons/profile.svg?react";
-// import Game from "../../images/game1.jpg?react";
+import MenuIcon from "../../icons/list.svg?react";
 
-export default function Header() {
+export default function Header({ onMenuToggle }) {
   const hasNotifications = true;
   const [isProfileOpen, setProfileOpen] = useState(false);
   const profileRef = useRef(null);
@@ -24,16 +23,15 @@ export default function Header() {
 
   return (
     <div className="header">
-      {/* <div className="header__item" ref={profileRef}>
-        <Link
-          to="/notifications"
-          className="header__button"
-          aria-label="уведомления"
+      <div className="header__item">
+        <button
+          className="header__button header__burger"
+          aria-label="меню"
+          onClick={onMenuToggle}
         >
-          <NotificationsIcon className="header__icon" />
-          {hasNotifications && <span className="header__indicator" />}
-        </Link>
-      </div> */}
+          <MenuIcon className="header__icon" />
+        </button>
+      </div>
 
       <div className="header__item" ref={profileRef}>
         <button
@@ -41,7 +39,6 @@ export default function Header() {
           aria-label="профиль"
           onClick={() => setProfileOpen((prev) => !prev)}
         >
-          {/* <img src={Game} className="header__icon profile" alt="профиль" /> */}
           <ProfileIcon className="header__icon" />
         </button>
         {isProfileOpen && (

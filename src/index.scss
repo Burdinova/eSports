@@ -22,3 +22,17 @@ h1 {
 a {
 text-decoration: none;
 }
+
+.MainWrapper {
+  max-width: 1800px;
+  width: 93%;
+  margin: 0 auto;
+  padding: 0 3% 0 10%;
+  padding-top: min(4vh, 40px); // или Math.max(window.innerHeight * 0.04, 40) если хочется более явно
+@media (max-width: 768px) {
+
+    padding: 0 4%;
+padding-top: min(4vh, 40px);
+  
+}
+}

@@ -5,8 +5,9 @@ import Modal from "../Modal/Modal.jsx";
 import TabSwich from "../TabSwitch/TabSwith.jsx";
 import TextInput from "../InputFields/TextInput.jsx";
 import SubmitButton from "../Button/SubmitButton.jsx";
+import MenuIcon from "../../icons/list.svg?react";
 
-export default function HeaderLogIn() {
+export default function HeaderLogIn({ onMenuToggle }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [email, setName] = useState("");
@@ -56,16 +57,30 @@ export default function HeaderLogIn() {
     setIsModalOpen(false);
   };
 
-
   return (
     <div className="header">
-      {/* <div className="header__item"> */}
-      <ModalButton  text="Вход" onClick={() => setIsModalOpen(true)} />
-      <Modal isOpen={isModalOpen} onClose={() => {setIsModalOpen(false); resetForm();}}>
+      <div className="header__item">
+        <button
+          className="header__button header__burger"
+          aria-label="меню"
+          onClick={onMenuToggle} // Используем onMenuToggle, как в Header.jsx
+        >
+          <MenuIcon className="header__icon" />
+        </button>
+      </div>
+
+      <ModalButton text="Вход" onClick={() => setIsModalOpen(true)} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+          resetForm();
+        }}
+      >
         <TabSwich tabs={tabs} activeTab={activeTab} onTabClick={setActiveTab} />
 
         {activeTab === "login" ? (
-          <form className="header__form"  onSubmit={handleLogin}>
+          <form className="header__form" onSubmit={handleLogin}>
             <TextInput
               id="email"
               label="Почта:"
@@ -112,7 +127,6 @@ export default function HeaderLogIn() {
           </form>
         )}
       </Modal>
-      {/* </div> */}
     </div>
   );
 }

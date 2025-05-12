@@ -1,5 +1,6 @@
-// import "./global.css";
+import "./index.scss";
 import { Routes, Route } from "react-router-dom";
+import { useRef, useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Header/Header.jsx";
 import Home from "./pages/Home/Home";
@@ -18,27 +19,26 @@ import Profile from "./pages/Profiles/Profile.jsx"
 import MyProfile from "./pages/Profiles/MyProfile.jsx"; // Твой личный проф
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
   return (
     <div className="App">
-      <Sidebar />
-      {/* <HeaderLogIn /> */}
-      <Header />
+      <Sidebar  isOpen={isSidebarOpen} onClose={toggleSidebar}  />
+      <HeaderLogIn onMenuToggle={toggleSidebar}/>
+      {/* <Header onMenuToggle={toggleSidebar} /> */}
       <div
         className="MainWrapper"
-        style={{
-          maxWidth: "1800px",
-          marginLeft: "7%",
-          width: "93%",
-          // right: "0",
-          // display: "flex",
-          margin: "0 auto",
-
-          //   backgroundColor: "#141414",
-          padding: "0 3% 0 10%",
-          paddingTop: Math.max(window.innerHeight * 0.04, 40),
-          // paddingTop: "4%",
-          // marginTop: "100px",
-        }}
+        // style={{
+        //   maxWidth: "1800px",
+        //   width: "93%",
+        //   margin: "0 auto",
+        //   padding: isTablet ? "0 4%" : "0 3% 0 10%",
+        //   paddingTop: Math.max(window.innerHeight * 0.04, 40),
+        // }}
       >
         <Routes>
           <Route path="/" element={<Home />} />
